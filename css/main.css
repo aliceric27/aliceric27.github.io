@@ -193,7 +193,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Noto Sans TC', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Helvetica', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -763,16 +763,15 @@ pre .javascript .function {
   margin-bottom: 20px;
   padding: 1em;
   position: relative;
-  background: #f9f9f9;
-  border: initial;
-  border-left: 3px solid #eee;
+  border: 1px solid #eee;
+  border-left-width: 5px;
 }
 .post-body .note h2,
 .post-body .note h3,
 .post-body .note h4,
 .post-body .note h5,
 .post-body .note h6 {
-  margin-top: 3px;
+  margin-top: 0;
   border-bottom: initial;
   margin-bottom: 0;
   padding-top: 0;
@@ -795,19 +794,7 @@ pre .javascript .function {
 .post-body .note img:last-child {
   margin-bottom: 0;
 }
-.post-body .note:not(.no-icon) {
-  padding-left: 2.5em;
-}
-.post-body .note:not(.no-icon)::before {
-  font-size: 1.5em;
-  left: 0.4em;
-  position: absolute;
-  top: calc(50% - 1em);
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
 .post-body .note.default {
-  background: #f7f7f7;
   border-left-color: #777;
 }
 .post-body .note.default h2,
@@ -817,12 +804,7 @@ pre .javascript .function {
 .post-body .note.default h6 {
   color: #777;
 }
-.post-body .note.default:not(.no-icon)::before {
-  content: "\f0a9";
-  color: #777;
-}
 .post-body .note.primary {
-  background: #f5f0fa;
   border-left-color: #6f42c1;
 }
 .post-body .note.primary h2,
@@ -832,12 +814,7 @@ pre .javascript .function {
 .post-body .note.primary h6 {
   color: #6f42c1;
 }
-.post-body .note.primary:not(.no-icon)::before {
-  content: "\f055";
-  color: #6f42c1;
-}
 .post-body .note.info {
-  background: #eef7fa;
   border-left-color: #428bca;
 }
 .post-body .note.info h2,
@@ -847,12 +824,7 @@ pre .javascript .function {
 .post-body .note.info h6 {
   color: #428bca;
 }
-.post-body .note.info:not(.no-icon)::before {
-  content: "\f05a";
-  color: #428bca;
-}
 .post-body .note.success {
-  background: #eff8f0;
   border-left-color: #5cb85c;
 }
 .post-body .note.success h2,
@@ -862,12 +834,7 @@ pre .javascript .function {
 .post-body .note.success h6 {
   color: #5cb85c;
 }
-.post-body .note.success:not(.no-icon)::before {
-  content: "\f058";
-  color: #5cb85c;
-}
 .post-body .note.warning {
-  background: #fdf8ea;
   border-left-color: #f0ad4e;
 }
 .post-body .note.warning h2,
@@ -877,12 +844,7 @@ pre .javascript .function {
 .post-body .note.warning h6 {
   color: #f0ad4e;
 }
-.post-body .note.warning:not(.no-icon)::before {
-  content: "\f06a";
-  color: #f0ad4e;
-}
 .post-body .note.danger {
-  background: #fcf1f2;
   border-left-color: #d9534f;
 }
 .post-body .note.danger h2,
@@ -890,10 +852,6 @@ pre .javascript .function {
 .post-body .note.danger h4,
 .post-body .note.danger h5,
 .post-body .note.danger h6 {
-  color: #d9534f;
-}
-.post-body .note.danger:not(.no-icon)::before {
-  content: "\f056";
   color: #d9534f;
 }
 .pagination .prev,
@@ -1072,7 +1030,7 @@ pre .javascript .function {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: 'Noto Sans TC', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Comic Sans MS', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -1256,7 +1214,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff46ff;
+  background: #a830f1;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1607,7 +1565,7 @@ pre .javascript .function {
   top: 0;
 }
 .post-body {
-  font-family: 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Sans TC', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -1905,7 +1863,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Sans TC', 'Noto Sans TC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
   text-align: center;
@@ -2258,7 +2216,7 @@ ul.breadcrumb li + li:last-child {
 }
 .header-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 0 0 10px 10px;
   box-shadow: initial;
   overflow: hidden;
   padding: 0;
@@ -2291,7 +2249,7 @@ ul.breadcrumb li + li:last-child {
 }
 .content-wrap {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 0 0 10px 10px;
   box-shadow: initial;
   box-sizing: border-box;
   padding: 40px;
@@ -2449,7 +2407,7 @@ ul.breadcrumb li + li:last-child {
 }
 .sidebar-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 10px;
   box-shadow: initial;
   box-sizing: border-box;
   color: var(--text-color);
@@ -2533,4 +2491,43 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-blogroll-item {
   padding: 0;
+}
+@counter-style repeating-emoji {
+  system: cyclic;
+  symbols: "\1F4CC";
+  suffix: " ";
+}
+.note ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+.note li {
+  list-style: repeating-emoji;
+}
+@media screen and (min-width: 1200px) {
+  body {
+    background-image: url("/images/20230228_155443.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+  #footer a {
+    color: #eee;
+  }
+}
+:root {
+  --content-bg-color: rgba(255,255,255,0.97);
+  --body-bg-color: rgba(255,255,255,0);
+}
+.post-block {
+  margin-top: 1rem;
+  padding: 0;
+  border-radius: 10px;
+}
+.affix-top {
+  border-radius: 10px;
+}
+body {
+  color: #3f3f3f;
 }
