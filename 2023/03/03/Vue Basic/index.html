@@ -28,7 +28,7 @@
 <meta property="og:description" content="學習 Vue 2 基礎的筆記，以每個小節做一個概念統整">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-03-03T05:33:12.000Z">
-<meta property="article:modified_time" content="2023-03-04T11:45:40.857Z">
+<meta property="article:modified_time" content="2023-03-05T08:52:11.577Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="學習">
 <meta name="twitter:card" content="summary">
@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-03-04 19:45:40" itemprop="dateModified" datetime="2023-03-04T19:45:40+08:00">2023-03-04</time>
+                <time title="修改時間：2023-03-05 16:52:11" itemprop="dateModified" datetime="2023-03-05T16:52:11+08:00">2023-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -344,7 +344,7 @@
 <li>定義：要用的屬性不存在，要通過已有屬性計算得來。</li>
 <li>原理：底層藉助了 Objcet.defineproperty 方法提供的 getter 和 setter 。</li>
 <li>get 函數什麼時候執行？<br> (1).初次讀取時會執行一次。<br> (2).當依賴的數據發生改變時會被再次調用。</li>
-<li>優勢：與 methods 實現相比，內部有緩存機制（複用），效率更高，調試方便。</li>
+<li>優勢：與 methods 實現相比，內部有緩存機制（複用），效率更高，找 BUG 方便。</li>
 <li>備註：<br> (1)計算屬性最終會出現在 vm 上，直接讀取使用即可。<br> (2)如果計算屬性要被修改，那必須寫 set 函數去響應修改，且 set 中要引起計算時依賴的數據發生改變。</li>
 </ol>
 <p>簡寫樣式：<br>如果計算屬性的值只要讀取不用修改(不用設定 setter )，則可以使用簡寫方式</p>
@@ -371,7 +371,10 @@
     <a href="/2023/03/02/Day01/" rel="prev" title="Leetcode 75 Day01">
       <i class="fa fa-chevron-left"></i> Leetcode 75 Day01
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/07/codwars/" rel="next" title="Codwars Greed is Good">
+      Codwars Greed is Good <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -446,7 +449,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
