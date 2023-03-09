@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="每日解題練習">
+  <meta name="description" content="學習 Typescript 的編譯相關方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codwars Greed is Good">
-<meta property="og:url" content="http://example.com/2023/03/07/codwars/">
+<meta property="og:title" content="Typescript 編譯相關">
+<meta property="og:url" content="http://example.com/2023/03/09/TS.%E7%B7%A8%E8%AD%AF%E7%9B%B8%E9%97%9C/">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="每日解題練習">
+<meta property="og:description" content="學習 Typescript 的編譯相關方式">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-03-06T17:01:40.000Z">
-<meta property="article:modified_time" content="2023-03-06T17:10:45.469Z">
+<meta property="article:published_time" content="2023-03-09T08:29:02.000Z">
+<meta property="article:modified_time" content="2023-03-09T11:58:48.319Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="學習">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2023/03/07/codwars/">
+<link rel="canonical" href="http://example.com/2023/03/09/TS.%E7%B7%A8%E8%AD%AF%E7%9B%B8%E9%97%9C/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Codwars Greed is Good | Wei's Blog</title>
+  <title>Typescript 編譯相關 | Wei's Blog</title>
   
 
 
@@ -153,7 +153,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/07/codwars/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/09/TS.%E7%B7%A8%E8%AD%AF%E7%9B%B8%E9%97%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
@@ -166,7 +166,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Codwars Greed is Good
+          Typescript 編譯相關
         </h1>
 
         <div class="post-meta">
@@ -177,7 +177,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-03-07 01:01:40 / 修改時間：01:10:45" itemprop="dateCreated datePublished" datetime="2023-03-07T01:01:40+08:00">2023-03-07</time>
+              <time title="創建時間：2023-03-09 16:29:02 / 修改時間：19:58:48" itemprop="dateCreated datePublished" datetime="2023-03-09T16:29:02+08:00">2023-03-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -186,6 +186,10 @@
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Typescript/" itemprop="url" rel="index"><span itemprop="name">Typescript</span></a>
                 </span>
             </span>
 
@@ -200,19 +204,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>每日解題練習</p>
+        <p>學習 Typescript 的編譯相關方式</p>
 <span id="more"></span>
 
 <hr>
-<h2 id="Greed-is-Good-Codewars"><a href="#Greed-is-Good-Codewars" class="headerlink" title="Greed is Good | Codewars"></a><a target="_blank" rel="noopener" href="https://www.codewars.com/kata/5270d0d18625160ada0000e4">Greed is Good | Codewars</a></h2><p>給一個陣列看裡面的數字數量，如果1為3個1組+1000，以此類推，各數字3個1組都會加不同的分數，</p>
-<p>如果數字不滿3位只有1和5會加分，剩下不加分。</p>
-<p>首先必須知道陣列中1~6每個數字共出現幾次</p>
-<p>這邊我用一個 a 的空陣列，並練習使用 .map 來跑迴圈計算，每個 dice 的 value 放入對應的 a 陣列 index中</p>
-<p>並使用判斷，如果加到 3 就將結果計算一次，最後再算剩下的1 和 5結果加上就是答案了</p>
-<p>雖然程式碼有點醜，不果我覺得這樣很好理解🤣</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">score</span>(<span class="params"> dice </span>) &#123;</span><br><span class="line"><span class="keyword">let</span> a =[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">let</span> r = <span class="number">0</span></span><br><span class="line">dice.<span class="title function_">map</span>(<span class="function">(<span class="params">v,i</span>)=&gt;</span>&#123;</span><br><span class="line">  a[v]++</span><br><span class="line">  <span class="keyword">if</span>(a[v]&gt;=<span class="number">3</span>)&#123;</span><br><span class="line">    <span class="keyword">switch</span>(v)&#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:&#123;</span><br><span class="line">        r+=<span class="number">1000</span></span><br><span class="line">        a[<span class="number">1</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">2</span>:&#123;</span><br><span class="line">        r+=<span class="number">200</span></span><br><span class="line">        a[<span class="number">2</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:&#123;</span><br><span class="line">        r+=<span class="number">300</span></span><br><span class="line">        a[<span class="number">3</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:&#123;</span><br><span class="line">        r+=<span class="number">400</span></span><br><span class="line">        a[<span class="number">4</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:&#123;</span><br><span class="line">        r+=<span class="number">500</span></span><br><span class="line">        a[<span class="number">5</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:&#123;</span><br><span class="line">        r+=<span class="number">600</span></span><br><span class="line">        a[<span class="number">6</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">  r+=a[<span class="number">1</span>]*<span class="number">100</span></span><br><span class="line">  r+=a[<span class="number">5</span>]*<span class="number">50</span></span><br><span class="line">  <span class="keyword">return</span> r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tsconfig-json-設定檔"><a href="#tsconfig-json-設定檔" class="headerlink" title="tsconfig.json 設定檔"></a>tsconfig.json 設定檔</h2><p>tsconfig.json 是 ts 編譯器的設定檔，ts編譯器可以根據訊息對程式碼進行編譯</p>
+<h3 id="檔案相關"><a href="#檔案相關" class="headerlink" title="檔案相關"></a>檔案相關</h3><ul>
+<li>includ 用來指定那些 ts 文件需要被編譯</li>
+</ul>
+<p>預設值：[“**&#x2F;*”]</p>
+<div class="note info">
+            <p>* 表示任意檔案<br>** 表示任意資料夾</p>
+          </div>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;include&quot;</span>: [</span><br><span class="line">  <span class="string">&quot;src/**/*.ts&quot;</span>,</span><br><span class="line">  <span class="string">&quot;src/**/*.tsx&quot;</span>,</span><br><span class="line">  <span class="string">&quot;src/**/*.vue&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tests/**/*.ts&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tests/**/*.tsx&quot;</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exclude 表示不包含哪些檔案</li>
+</ul>
+<p>預設值：[“node_modules”, “bower_components”, “jspm_packages”]</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">   <span class="string">&quot;node_modules&quot;</span></span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
 
 <hr>
+<h3 id="compilerOptions-相關"><a href="#compilerOptions-相關" class="headerlink" title="compilerOptions 相關"></a>compilerOptions 相關</h3><p>compilerOptions 底下有非常多的設定屬性，每個屬性分別代表不同的意思</p>
+<ul>
+<li>target</li>
+</ul>
+<p>用來指定 ts 編譯的目標版本</p>
+<p>接受值：ES3（預設）、ES5、ES6&#x2F;ES2015、ES7&#x2F;ES2016、ES2017、ES2018、ES2019、ES2020、ESNext</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;ES6&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>module</li>
+</ul>
+<p>用來指定模組化的規範</p>
+<p>接受值：CommonJS、UMD、AMD、System、ES2020、ESNext、None</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;esnext&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>lib</li>
+</ul>
+<p>用來指定程式碼運行包含的函式庫，通常不會動到</p>
+<p>接受值：ES5、ES6&#x2F;ES2015、ES7&#x2F;ES2016、ES2017、ES2018、ES2019、ES2020、ESNext、DOM、WebWorker、ScriptHost …</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;ES6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [<span class="string">&quot;ES6&quot;</span>, <span class="string">&quot;DOM&quot;</span>],</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;outFile&quot;</span>: <span class="string">&quot;dist/aa.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>outDir</li>
+</ul>
+<p>編譯後檔案所在的目錄，預設情況下，編譯後的 js 檔案會和 ts 檔案位於相同的目錄，設定 outDir 後可以改變編譯後檔案的位置</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;dist&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>設定後編譯後的 js 檔案將會產生到 dist 目錄</p>
 
     </div>
 
@@ -231,13 +272,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/03/03/Vue%20Basic/" rel="prev" title="Vue2 Basic">
-      <i class="fa fa-chevron-left"></i> Vue2 Basic
+    <a href="/2023/03/09/TS.Basic/" rel="prev" title="Typescript 聲明方式">
+      <i class="fa fa-chevron-left"></i> Typescript 聲明方式
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/03/07/%E9%8C%84%E5%8F%96%E5%BF%83%E5%BE%97/" rel="next" title="錄取心得">
-      錄取心得 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -296,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Greed-is-Good-Codewars"><span class="nav-number">1.</span> <span class="nav-text">Greed is Good | Codewars</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tsconfig-json-%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">tsconfig.json 設定檔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E7%9B%B8%E9%97%9C"><span class="nav-number">1.1.</span> <span class="nav-text">檔案相關</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compilerOptions-%E7%9B%B8%E9%97%9C"><span class="nav-number">1.2.</span> <span class="nav-text">compilerOptions 相關</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1192,7 +1192,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff7ec3;
+  background: #8e571a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2485,11 +2485,9 @@ ul {
 .highlight-container,
 .highlight,
 .table-container {
-  background-color: #282c34;
   border-radius: 10px;
 }
 .highlight .code pre {
-  background: #282c34;
   padding-left: 1rem;
   width: 100%;
 }
