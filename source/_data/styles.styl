@@ -1,0 +1,97 @@
+@counter-style repeating-emoji {
+  system: cyclic;
+  symbols: "\1F4CD"; // unicode code point
+  suffix: " ";
+}
+@font-face {
+  font-family: Pingfun;
+  src: url(/images/Pingfun.woff);
+}
+.post-body {
+//font-family: 'Pingfun', sans-serif;
+text-align:start;
+font-size: 1rem;
+font-weight: 500;
+}
+
+code{
+  padding :0,1rem,0,1rem;
+  background-color: #d5d5d5;
+  color:#eb3f3f;
+  font-weight: 500;
+
+}
+
+.note ul {
+  list-style: disc; 
+  padding-left: 1rem;
+}
+ul {
+  list-style: disc; 
+}
+
+.note li  {
+  //margin:0.5rem;
+    //list-style: repeating-emoji; 
+  }
+// .note li::before {
+//     content: "";
+//     position: absolute;
+//     width: 8px;
+//     height: 8px;
+//     background: #c9ced1;
+//     border-radius: 50%;
+//     left: -1rem;
+//     top: 1rem;
+//   }
+  .highlight-container , .highlight,.table-container{
+    //background-color: #282c34;
+    border-radius: 0.5rem;
+    
+    }
+.highlight .code pre {
+    //background: #282c34;
+    padding-left: 1rem;
+    width: 100%;
+}
+@media screen and (min-width:1200px) {
+
+    body {  
+    background-image:url(/images/20230228_155443.jpg); //這邊修改成你的背景圖片 
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+    background-size: cover;
+   
+   }
+
+    #footer a {
+        color:#eee;
+    }
+}
+
+
+
+//###### 博客内容透明化 ######
+
+:root {
+  --content-bg-color:rgba(255, 255, 255, 0.97);
+  --body-bg-color:rgba(255, 255, 255, 0)
+}
+// 主页文章添加阴影效果
+.post-block{
+  //border: 1px solid rgb(239, 239, 239)
+  margin-top:1rem;
+  padding: 0;
+  border-radius: 10px
+  
+}
+.affix-top{
+  border-radius: 10px;
+  }
+  body{
+    color:rgb(63, 63, 63);
+  }
+.copyright,.powered-by{
+display:none
+}
