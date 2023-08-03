@@ -107,4 +107,5 @@ deploy:
   repo: https://github.com/aliceric27/aliceric27.github.io.git # 你的儲存庫 clone
   branch: gh-pages # 儲存庫分支
   message: "update" # Commit 訊息
-  command: bash deploy.sh
+
+command: bash deploy.sh
