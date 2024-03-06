@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Vue  監視屬性，顧名思義就是當值改變時就會執行的 function。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 監視屬性">
+<meta property="og:url" content="http://example.com/2023/03/14/Vue%20%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7/">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="Vue  監視屬性，顧名思義就是當值改變時就會執行的 function。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-03-14T08:13:09.000Z">
+<meta property="article:modified_time" content="2024-03-06T10:53:52.079Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="學習">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/03/14/Vue%20%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2023/03/14/Vue%20%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7/","path":"2023/03/14/Vue 監視屬性/","title":"Vue 監視屬性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vue 監視屬性 | Wei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">NaN==Not a Nerd</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">基本監視屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">1.1.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">深度監視屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96-1"><span class="nav-number">2.1.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7%E7%B0%A1%E5%AF%AB"><span class="nav-number">3.</span> <span class="nav-text">監視屬性簡寫</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wei"
+      src="https://i.imgur.com/F1F38VG.jpg">
+  <p class="site-author-name" itemprop="name">Wei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aliceric27" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aliceric27" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuki787817@gmail.com" title="E-Mail → mailto:yuki787817@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/14/Vue%20%E7%9B%A3%E8%A6%96%E5%B1%AC%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
+      <meta itemprop="name" content="Wei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vue 監視屬性 | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue 監視屬性
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-03-14 16:13:09" itemprop="dateCreated datePublished" datetime="2023-03-14T16:13:09+08:00">2023-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-03-06 18:53:52" itemprop="dateModified" datetime="2024-03-06T18:53:52+08:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Vue  監視屬性，顧名思義就是當值改變時就會執行的 function。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="基本監視屬性"><a href="#基本監視屬性" class="headerlink" title="基本監視屬性"></a>基本監視屬性</h2><p>基本用法：</p>
+<p>寫在 Vue 實例內後，並定義要監視的變數，這裡用<code>isHot</code>示範<br>此<code>isHot</code>為配置物件，裡面需要設定對應的回傳設定</p>
+<p>這邊定義其函數<code>handler</code>，當<code>isHot</code>發生改變時則會執行函數</p>
+<p><code>handler</code>中傳入兩個參數，第一個為改變後的值，第二個為舊的值</p>
+<p>設定項 <strong>immediate</strong> 為 true 時會在網頁載入設置監聽器時就調用一次<code>handler</code>函數</p>
+<p><strong>immediate</strong> 如果沒有配置時則預設值為 false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">   <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">   <span class="attr">data</span>:&#123;</span><br><span class="line">    <span class="attr">isHot</span>:<span class="literal">true</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="attr">isHot</span>:&#123;</span><br><span class="line">     <span class="attr">immediate</span>:<span class="literal">true</span>, <span class="comment">//初始化時讓handler調用一下</span></span><br><span class="line">     <span class="comment">//handler什麼時候調用？當isHot發生改變時。</span></span><br><span class="line">     <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>另一種寫法，寫在實例外</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">   <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">   <span class="attr">data</span>:&#123;</span><br><span class="line">    <span class="attr">isHot</span>:<span class="literal">true</span>,</span><br><span class="line">   &#125;</span><br><span class="line">   ...省略</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">immediate</span>:<span class="literal">true</span>, </span><br><span class="line">    <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>監視屬性watch：</p>
+<ol>
+<li>當被監視的屬性變化時, Callback 函數自動調用, 進行相關操作</li>
+<li><strong>監視的屬性必須存在，才能進行監視！！</strong></li>
+<li>監視的兩種寫法：<br> new Vue 時傳入 watch 配置<br> 通過 vm.$watch 監視</li>
+</ol>
+<hr>
+<h2 id="深度監視屬性"><a href="#深度監視屬性" class="headerlink" title="深度監視屬性"></a>深度監視屬性</h2><p>假設一個情境，今天 data 中的一個變數 numbers 為一個物件，我想要監視其中改變的屬性要怎麼做呢</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>:&#123;</span><br><span class="line">    <span class="attr">isHot</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">numbers</span>:&#123;</span><br><span class="line">     <span class="attr">a</span>:<span class="number">1</span>,</span><br><span class="line">     <span class="attr">b</span>:<span class="number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>如果我要監視特定 numbers 內的 a 值可以這樣子寫</p>
+<p><strong>需要加上引號</strong>，因為在 JS 中的 key 寫成<code>number.a</code>是不合法的寫法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="attr">isHot</span>:&#123;         <span class="comment">//這段可以先不用看</span></span><br><span class="line">     <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;numbers.a&quot;</span>:&#123;</span><br><span class="line">     <span class="title function_">handler</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a被改變了&#x27;</span>)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可是如果 numbers 內有很多資料，需求改成我要監視裡面的屬性就不能這樣子一個個寫</p>
+<p>如果設定為監測 numbers 這個物件則不會發生任何變化，因為監測值是 numbers 這個變數本身存在記憶體的位置</p>
+<p>假設：numbers&#x3D;{a:1,b:1} 當 number&#x3D;{a:2,b:2} 時，此時 watch 監測的 numbers 才會發生改變</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="comment">//這段可以先不用看</span></span><br><span class="line">    <span class="attr">isHot</span>:&#123;         </span><br><span class="line">     <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//這樣寫除非重新賦值整個 numbers 否則永遠監視不到</span></span><br><span class="line">    <span class="attr">numbers</span>:&#123;</span><br><span class="line">     <span class="title function_">handler</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a被改變了&#x27;</span>)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>此時可以新增一個配置屬性<code>deep</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//此時不管物件內的哪個層級變數發生變化都可以監視到</span></span><br><span class="line"> <span class="attr">numbers</span>:&#123;</span><br><span class="line"> <span class="attr">deep</span>:<span class="literal">true</span></span><br><span class="line">  <span class="title function_">handler</span>(<span class="params"></span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a被改變了&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="結論-1"><a href="#結論-1" class="headerlink" title="結論"></a>結論</h3><p>深度監視<br>    1. Vue 中的 watch 預設不監測對象內部值的改變（第一層）。<br>    2. 配置 deep:true 可以監測對象內部值改變（多層結構）。<br>備註：<br>    1. Vue 自身可以監測對象內部值的改變，但 Vue 提供的 watch 預設不可以！(效能考量)<br>    2. 使用 watch 時根據資料的具體結構，決定是否採用深度監視。</p>
+<hr>
+<h2 id="監視屬性簡寫"><a href="#監視屬性簡寫" class="headerlink" title="監視屬性簡寫"></a>監視屬性簡寫</h2><p>如果是正常寫法，想要包含設定選項則是這樣寫</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//正常寫法</span></span><br><span class="line">    <span class="attr">isHot</span>:&#123;</span><br><span class="line">     <span class="comment">// immediate:true, //初始化時讓handler調用一下</span></span><br><span class="line">     <span class="comment">// deep:true,//深度監視</span></span><br><span class="line">     <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//簡寫</span></span><br><span class="line">    <span class="title function_">isHot</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue,<span class="variable language_">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用外部<code>$watch</code>方式則是這樣寫</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正常寫法</span></span><br><span class="line">  vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,&#123;</span><br><span class="line">   <span class="attr">immediate</span>:<span class="literal">true</span>, <span class="comment">//初始化時讓handler調用一下</span></span><br><span class="line">   <span class="attr">deep</span>:<span class="literal">true</span>,<span class="comment">//深度監視</span></span><br><span class="line">   <span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//簡寫</span></span><br><span class="line">  vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue,<span class="variable language_">this</span>)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用簡寫的的前提是沒有要配置 immediate 、deep 等配置選項</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/13/TS.%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B%E6%95%B4%E7%90%86/" rel="prev" title="Typescript 資料型態總整理">
+                  <i class="fa fa-chevron-left"></i> Typescript 資料型態總整理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/03/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E6%9C%80%E8%BF%91%E5%AD%B8%E7%BF%92%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7/" rel="next" title="整理一下最近學習的工具&心得">
+                  整理一下最近學習的工具&心得 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/aliceric27" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

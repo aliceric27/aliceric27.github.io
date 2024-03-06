@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="探討解題中的時間與空間複雜度問題，與一些簡單的解題範例，包含課程結束後的一些個人心得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="時間與空間複雜度與課後心得">
+<meta property="og:url" content="http://example.com/2023/03/01/%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6/">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="探討解題中的時間與空間複雜度問題，與一些簡單的解題範例，包含課程結束後的一些個人心得">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-03-01T11:51:01.000Z">
+<meta property="article:modified_time" content="2024-03-06T10:53:52.077Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="學習">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/03/01/%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2023/03/01/%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6/","path":"2023/03/01/時間與空間複雜度/","title":"時間與空間複雜度與課後心得"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>時間與空間複雜度與課後心得 | Wei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">NaN==Not a Nerd</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LIOJ-%E7%B0%A1%E6%98%93%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">LIOJ | 簡易排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIOJ-%E6%90%9C%E5%B0%8B%E6%95%B8%E5%AD%97"><span class="nav-number">2.</span> <span class="nav-text">LIOJ | 搜尋數字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIOJ-%E9%99%A3%E5%88%97%E6%9C%80%E7%9F%AD%E8%B7%9D%E9%9B%A2"><span class="nav-number">3.</span> <span class="nav-text">LIOJ | 陣列最短距離</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIOJ-Two-sum"><span class="nav-number">4.</span> <span class="nav-text">LIOJ | Two sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIOJ-%E9%80%86%E5%BA%8F%E6%95%B8%E5%B0%8D"><span class="nav-number">5.</span> <span class="nav-text">LIOJ | 逆序數對</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%B2%E7%A8%8B%E5%BF%83%E5%BE%97"><span class="nav-number">6.</span> <span class="nav-text">課程心得</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wei"
+      src="https://i.imgur.com/F1F38VG.jpg">
+  <p class="site-author-name" itemprop="name">Wei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aliceric27" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aliceric27" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuki787817@gmail.com" title="E-Mail → mailto:yuki787817@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/01/%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
+      <meta itemprop="name" content="Wei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="時間與空間複雜度與課後心得 | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          時間與空間複雜度與課後心得
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-03-01 19:51:01" itemprop="dateCreated datePublished" datetime="2023-03-01T19:51:01+08:00">2023-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-03-06 18:53:52" itemprop="dateModified" datetime="2024-03-06T18:53:52+08:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>探討解題中的時間與空間複雜度問題，與一些簡單的解題範例，包含課程結束後的一些個人心得</p>
+<span id="more"></span>
+
+<hr>
+<h3 id="LIOJ-簡易排序"><a href="#LIOJ-簡易排序" class="headerlink" title="LIOJ | 簡易排序"></a><a target="_blank" rel="noopener" href="https://oj.lidemy.com/problem/1035">LIOJ | 簡易排序</a></h3><p>使用到 <code>.sort</code>內建函數</p>
+<p>簡單來說<code>.sort</code>可以傳入一個 function 並依照 return 的值對<strong>原本</strong>陣列進行排序</p>
+<p>簡易記法，假設傳入的值為 a,b 分別是 3 與 5</p>
+<p>如果 return 值為 -2 (a-b) 則陣列保持不變(由小到大)</p>
+<p>如果 return 值 2 (b-a) 則a,b對調，且陣列排序(由大到小)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line"> <span class="keyword">let</span> arr=[]</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;lines.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    arr.<span class="title function_">push</span>(lines[i])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//3,5</span></span><br><span class="line">  arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a-b</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(arr[i])</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>counting sort</code>排序方式</p>
+<p>原理：因為數入數值是固定的，所以先準備好特定範圍內的容器，然後分別放入</p>
+<p>最後再用迴圈讀取每個容器數值為多少就是需要重複印出幾次</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> arr=[]</span><br><span class="line">  <span class="comment">// arr[i]=i的個數</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  arr[i]=<span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">1</span>;i&lt;lines.<span class="property">length</span>;i++)&#123;</span><br><span class="line">  <span class="keyword">let</span> n = <span class="title class_">Number</span>(lines[i]);</span><br><span class="line">  arr[n]++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">1</span>;j&lt;=arr[i];j++)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="LIOJ-搜尋數字"><a href="#LIOJ-搜尋數字" class="headerlink" title="LIOJ | 搜尋數字"></a><a target="_blank" rel="noopener" href="https://oj.lidemy.com/problem/1047">LIOJ | 搜尋數字</a></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line"><span class="keyword">let</span> a = lines[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> arr=[];</span><br><span class="line"><span class="keyword">let</span> b=[]</span><br><span class="line"><span class="keyword">let</span> l=<span class="title class_">Number</span>(a[<span class="number">0</span>])+<span class="number">1</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;=a[<span class="number">0</span>];i++)&#123;</span><br><span class="line">    arr.<span class="title function_">push</span>(lines[i])</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;lines.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">search</span>(lines[i],arr));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">search</span>(<span class="params">q,arr</span>)&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i]===q)&#123;</span><br><span class="line">      <span class="keyword">return</span> i</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用二分搜尋法，類似終極密碼，每次將數對切半比較</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> [n, m] = lines[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> arr = []</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">    arr[i] = <span class="title class_">Number</span>(lines[i+<span class="number">1</span>])</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  n = <span class="title class_">Number</span>(n)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=n+<span class="number">1</span>; i&lt;lines.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> q = <span class="title class_">Number</span>(lines[i])</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">search</span>(arr, q))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">search</span>(<span class="params">arr, q</span>) &#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    [............]</span></span><br><span class="line"><span class="comment">    ^L    ^M    ^R  </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    [............]</span></span><br><span class="line"><span class="comment">    ^L   ^R </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">let</span> L = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> R = arr.<span class="property">length</span> - <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span>(L &lt;= R) &#123;</span><br><span class="line">    <span class="keyword">let</span> M = <span class="title class_">Math</span>.<span class="title function_">floor</span>((L+R) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (arr[M] === q) &#123;</span><br><span class="line">      <span class="keyword">return</span> M</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[M] &gt; q) &#123;</span><br><span class="line">      R = M - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      L = M + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="LIOJ-陣列最短距離"><a href="#LIOJ-陣列最短距離" class="headerlink" title="LIOJ | 陣列最短距離"></a><a target="_blank" rel="noopener" href="https://oj.lidemy.com/problem/1049">LIOJ | 陣列最短距離</a></h3><p>這題複習了一下<code>.map()</code>方法，可以遍歷陣列並帶入一個 function</p>
+<p>原本的解題沒有做判斷會導致超時，根據教學提示後加入判斷就可以成功 AC</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = lines[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)</span><br><span class="line">  <span class="keyword">let</span> b = lines[<span class="number">2</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)</span><br><span class="line">  <span class="keyword">let</span> min = <span class="title class_">Infinity</span></span><br><span class="line">  <span class="keyword">let</span> r =<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;a.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">0</span>;j&lt;b.<span class="property">length</span>;j++)&#123;</span><br><span class="line">      <span class="keyword">let</span> myy = <span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title class_">Math</span>.<span class="title function_">abs</span>(a[i])-<span class="title class_">Math</span>.<span class="title function_">abs</span>(b[j]))  <span class="comment">//判斷句離</span></span><br><span class="line">      <span class="keyword">let</span> myy2 = <span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title class_">Math</span>.<span class="title function_">abs</span>(a[i])-<span class="title class_">Math</span>.<span class="title function_">abs</span>(b[j+<span class="number">1</span>])) <span class="comment">//判斷下一個距離</span></span><br><span class="line">      <span class="keyword">if</span>(myy2&gt;myy)&#123;          <span class="comment">//判斷是否需要繼續跑 j 迴圈</span></span><br><span class="line">        j=<span class="number">0</span></span><br><span class="line">        i++</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(myy&lt;min)&#123;</span><br><span class="line">        min=myy;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(min);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="LIOJ-Two-sum"><a href="#LIOJ-Two-sum" class="headerlink" title="LIOJ | Two sum"></a><a target="_blank" rel="noopener" href="https://oj.lidemy.com/problem/1050">LIOJ | Two sum</a></h3><p>看了一下原來是 leetcode 的題目，原本還小緊張一下，結果發現原上 leetcode 上也有這麼簡單的題目</p>
+<p>這邊有做一個判斷，只要<strong>被加數&gt;目標</strong>那就可以跳過這個數，直接跑下一個迴圈</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> n = lines[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)[<span class="number">1</span>]</span><br><span class="line">  <span class="keyword">let</span> a = lines[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)</span><br><span class="line">  <span class="keyword">let</span> r = []</span><br><span class="line">  <span class="keyword">let</span> mr =<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;a.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j=i+<span class="number">1</span>;j&lt;a.<span class="property">length</span>;j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(j&gt;n)&#123;</span><br><span class="line">        i++</span><br><span class="line">        j=<span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(a[i]+a[j]===n)&#123;</span><br><span class="line">        r.<span class="title function_">push</span>(i,j)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  r.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a-b</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;r.<span class="property">length</span>;i++)&#123;</span><br><span class="line">    mr = mr + r[i] + <span class="string">&#x27; &#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(mr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="LIOJ-逆序數對"><a href="#LIOJ-逆序數對" class="headerlink" title="LIOJ | 逆序數對"></a><a target="_blank" rel="noopener" href="https://oj.lidemy.com/problem/1051">LIOJ | 逆序數對</a></h3><p>簡單的窮舉</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: process.<span class="property">stdin</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lines = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取到一行，先把這一行加進去 lines 陣列，最後再一起處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="keyword">function</span> (<span class="params">line</span>) &#123;</span><br><span class="line">  lines.<span class="title function_">push</span>(line)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸入結束，開始針對 lines 做處理</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">solve</span>(lines)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面都不用管，只需要完成這個 function 就好，可以透過 lines[i] 拿取內容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solve</span>(<span class="params">lines</span>) &#123;</span><br><span class="line"> <span class="keyword">let</span> n =lines[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)</span><br><span class="line"> <span class="keyword">let</span> r = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;n.<span class="property">length</span>;i++)&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> j=i+<span class="number">1</span>;j&lt;n.<span class="property">length</span>;j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n[i]&gt;n[j])&#123;</span><br><span class="line">      r++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="課程心得"><a href="#課程心得" class="headerlink" title="課程心得"></a>課程心得</h3><p>大約花了一個禮拜左右做習題，把 LIOJ 上經典題目都做得差不多了，這次學習真的收穫非常滿，不僅參考影片解法，也讓我對解題產生興趣，思考過程中會將所有先前練習的基本功部分都聯想到，解題三寶：function、迴圈、判斷，幾乎就可以幹掉大部分題目，題目中也不斷地在使用這三樣法寶外搭一些內建函數，基本無敵的吧👌，最後很感謝有很多前輩願意整理這種免費的優質教學內容，讓我們這些程式新手有一個方向循序學習，接下來我會嘗試往 CodeWars 或是 Leetcode 解題嘗試邁進 👍</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/24/Cocos%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E9%9D%A2%E8%A9%A6%E7%B6%93%E9%A9%97/" rel="prev" title="Cocos前端工程師面試經驗">
+                  <i class="fa fa-chevron-left"></i> Cocos前端工程師面試經驗
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/02/Day01/" rel="next" title="Leetcode 75 Day01">
+                  Leetcode 75 Day01 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/aliceric27" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
