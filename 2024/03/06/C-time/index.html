@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="C# 時間操作相關方法">
+    <meta name="description" content="C#中時間操作相關方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#時間操作">
 <meta property="og:url" content="http://example.com/2024/03/06/C-time/">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="C# 時間操作相關方法">
+<meta property="og:description" content="C#中時間操作相關方法">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-03-06T10:55:13.000Z">
-<meta property="article:modified_time" content="2024-03-06T11:59:25.917Z">
+<meta property="article:modified_time" content="2024-03-06T12:11:14.047Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="學習">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%99%82%E9%96%93%E6%93%8D%E4%BD%9C%E7%9B%B8%E9%97%9C%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">C# 時間操作相關方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E8%99%95%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%99%82%E9%96%93"><span class="nav-number"></span> <span class="nav-text">C# 中處理日期和時間</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">創建 DateTime 物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AA%E5%95%8F-DateTime-%E7%9A%84%E7%B5%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">訪問 DateTime 的組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">修改 DateTime 物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">格式化 DateTime 物件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84-TimeSpan"><span class="nav-number"></span> <span class="nav-text">C# 中的 TimeSpan</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA-TimeSpan-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">創建 TimeSpan 物件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A7%8B%E9%80%A0%E5%87%BD%E6%95%B8"><span class="nav-number">1.1.</span> <span class="nav-text">使用構造函數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9C%E6%85%8B%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">使用靜態方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-DateTime-%E6%B8%9B%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">使用 DateTime 減法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%80%E5%8F%96-TimeSpan-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">讀取 TimeSpan 屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-TimeSpan"><span class="nav-number">3.</span> <span class="nav-text">修改 TimeSpan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B%E7%82%BA-x2F-%E5%BE%9E%E5%AD%97%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">轉換為&#x2F;從字串</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E8%99%95%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%99%82%E9%96%93"><span class="nav-number">1.</span> <span class="nav-text">C# 中處理日期和時間</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">創建 DateTime 物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AA%E5%95%8F-DateTime-%E7%9A%84%E7%B5%84%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">訪問 DateTime 的組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">修改 DateTime 物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96-DateTime-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">格式化 DateTime 物件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84-TimeSpan"><span class="nav-number">2.</span> <span class="nav-text">C# 中的 TimeSpan</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA-TimeSpan-%E7%89%A9%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">創建 TimeSpan 物件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A7%8B%E9%80%A0%E5%87%BD%E6%95%B8"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用構造函數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9C%E6%85%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用靜態方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-DateTime-%E6%B8%9B%E6%B3%95"><span class="nav-number">2.1.3.</span> <span class="nav-text">使用 DateTime 減法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%80%E5%8F%96-TimeSpan-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">讀取 TimeSpan 屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-TimeSpan"><span class="nav-number">2.3.</span> <span class="nav-text">修改 TimeSpan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B%E7%82%BA-x2F-%E5%BE%9E%E5%AD%97%E4%B8%B2"><span class="nav-number">2.4.</span> <span class="nav-text">轉換為&#x2F;從字串</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -128,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -204,7 +204,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2024-03-06 18:55:13 / 修改時間：19:59:25" itemprop="dateCreated datePublished" datetime="2024-03-06T18:55:13+08:00">2024-03-06</time>
+      <time title="創建時間：2024-03-06 18:55:13 / 修改時間：20:11:14" itemprop="dateCreated datePublished" datetime="2024-03-06T18:55:13+08:00">2024-03-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -226,7 +226,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="C-時間操作相關方法"><a href="#C-時間操作相關方法" class="headerlink" title="C# 時間操作相關方法"></a>C# 時間操作相關方法<br><span id="more"></span></h2><h1 id="C-中處理日期和時間"><a href="#C-中處理日期和時間" class="headerlink" title="C# 中處理日期和時間"></a>C# 中處理日期和時間</h1><h2 id="創建-DateTime-物件"><a href="#創建-DateTime-物件" class="headerlink" title="創建 DateTime 物件"></a>創建 <code>DateTime</code> 物件</h2><p><code>DateTime</code> 是一個結構體，定義於 <code>System</code> 命名空間中。創建 <code>DateTime</code> 物件的方法主要有以下幾種：</p>
+        <p>C#中時間操作相關方法</p>
+<span id="more"></span>
+<hr>
+<h1 id="C-中處理日期和時間"><a href="#C-中處理日期和時間" class="headerlink" title="C# 中處理日期和時間"></a>C# 中處理日期和時間</h1><h2 id="創建-DateTime-物件"><a href="#創建-DateTime-物件" class="headerlink" title="創建 DateTime 物件"></a>創建 <code>DateTime</code> 物件</h2><p><code>DateTime</code> 是一個結構體，定義於 <code>System</code> 命名空間中。創建 <code>DateTime</code> 物件的方法主要有以下幾種：</p>
 <ol>
 <li>使用構造函數：可以通過指定年、月、日等訊息來創建一個 <code>DateTime</code> 物件。 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DateTime dateTime = <span class="keyword">new</span> DateTime(<span class="number">2015</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure></li>
 <li>獲取當前時間：可以使用 <code>DateTime.Now</code> 來獲得當前的日期和時間。 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DateTime now = DateTime.Now;</span><br></pre></td></tr></table></figure></li>
@@ -292,8 +295,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/03/06/c-text/" rel="next" title="c-text">
-                  c-text <i class="fa fa-chevron-right"></i>
+                <a href="/2024/03/06/c-text/" rel="next" title="C# 字串操作方法">
+                  C# 字串操作方法 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

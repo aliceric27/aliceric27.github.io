@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="C#中檔案操作的相關方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# 檔案操作方法">
+<meta property="og:url" content="http://example.com/2024/03/06/C-file/">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="C#中檔案操作的相關方法">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-03-06T12:19:04.000Z">
+<meta property="article:modified_time" content="2024-03-06T12:23:17.246Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="學習">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/03/06/C-file/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/03/06/C-file/","path":"2024/03/06/C-file/","title":"C# 檔案操作方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C# 檔案操作方法 | Wei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">NaN==Not a Nerd</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84-File-%E8%88%87-FileInfo-%E9%A1%9E%E5%88%A5%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.</span> <span class="nav-text">C# 中的 File 與 FileInfo 類別使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#File-%E9%A1%9E%E5%88%A5"><span class="nav-number">1.1.</span> <span class="nav-text">File 類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">複製檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88"><span class="nav-number">1.1.2.</span> <span class="nav-text">刪除檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">檢查檔案是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%80%E5%8F%96%E5%85%A8%E9%83%A8%E6%96%87%E5%AD%97"><span class="nav-number">1.1.4.</span> <span class="nav-text">讀取全部文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%80%E5%8F%96%E5%85%A8%E9%83%A8%E4%BA%8C%E9%80%B2%E4%BD%8D%E8%B3%87%E6%96%99"><span class="nav-number">1.1.5.</span> <span class="nav-text">讀取全部二進位資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileInfo-%E9%A1%9E%E5%88%A5"><span class="nav-number">1.2.</span> <span class="nav-text">FileInfo 類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-FileInfo-%E7%89%A9%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">建立 FileInfo 物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">複製檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">刪除檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">檢查檔案是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%95%9F%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96"><span class="nav-number">1.2.5.</span> <span class="nav-text">開啟檔案讀取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%B8%E6%93%87-File-%E6%88%96-FileInfo"><span class="nav-number">1.3.</span> <span class="nav-text">選擇 File 或 FileInfo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84-Directory-%E8%88%87-DirectoryInfo-%E9%A1%9E%E5%88%A5%E5%AF%A6%E5%8B%99%E6%87%89%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">C# 中的 Directory 與 DirectoryInfo 類別實務應用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directory-%E9%A1%9E%E5%88%A5"><span class="nav-number">2.1.</span> <span class="nav-text">Directory 類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%9B%AE%E9%8C%84"><span class="nav-number">2.1.1.</span> <span class="nav-text">建立目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8D%B2%E5%8F%96%E7%9B%AE%E9%8C%84%E4%B8%AD%E7%9A%84%E6%AA%94%E6%A1%88"><span class="nav-number">2.1.2.</span> <span class="nav-text">獲取目錄中的檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8D%B2%E5%8F%96%E5%AD%90%E7%9B%AE%E9%8C%84"><span class="nav-number">2.1.3.</span> <span class="nav-text">獲取子目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E7%9B%AE%E9%8C%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">2.1.4.</span> <span class="nav-text">檢查目錄是否存在</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectoryInfo-%E9%A1%9E%E5%88%A5"><span class="nav-number">2.2.</span> <span class="nav-text">DirectoryInfo 類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-DirectoryInfo-%E7%89%A9%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">建立 DirectoryInfo 物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8D%B2%E5%8F%96%E7%9B%AE%E9%8C%84%E4%B8%AD%E7%9A%84%E6%AA%94%E6%A1%88-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">獲取目錄中的檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8D%B2%E5%8F%96%E5%AD%90%E7%9B%AE%E9%8C%84-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">獲取子目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E7%9B%AE%E9%8C%84"><span class="nav-number">2.2.4.</span> <span class="nav-text">刪除目錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%B8%E6%93%87-Directory-%E6%88%96-DirectoryInfo"><span class="nav-number">2.3.</span> <span class="nav-text">選擇 Directory 或 DirectoryInfo</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wei"
+      src="https://i.imgur.com/F1F38VG.jpg">
+  <p class="site-author-name" itemprop="name">Wei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aliceric27" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aliceric27" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuki787817@gmail.com" title="E-Mail → mailto:yuki787817@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/06/C-file/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
+      <meta itemprop="name" content="Wei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C# 檔案操作方法 | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C# 檔案操作方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2024-03-06 20:19:04 / 修改時間：20:23:17" itemprop="dateCreated datePublished" datetime="2024-03-06T20:19:04+08:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>C#中檔案操作的相關方法</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="C-中的-File-與-FileInfo-類別使用指南"><a href="#C-中的-File-與-FileInfo-類別使用指南" class="headerlink" title="C# 中的 File 與 FileInfo 類別使用指南"></a>C# 中的 File 與 FileInfo 類別使用指南</h1><p>在 C# 中，處理檔案操作時常會用到 <code>File</code> 與 <code>FileInfo</code> 兩個類別。這兩個類別提供了豐富的方法來操作檔案，主要差異在於 <code>File</code> 提供靜態方法，而 <code>FileInfo</code> 則提供實例方法。以下介紹這兩個類別的主要使用方式及示例。</p>
+<h2 id="File-類別"><a href="#File-類別" class="headerlink" title="File 類別"></a>File 類別</h2><p><code>File</code> 類別提供一系列的靜態方法來執行檔案操作，如複製、創建、刪除、加密、檢查檔案是否存在等。</p>
+<h3 id="複製檔案"><a href="#複製檔案" class="headerlink" title="複製檔案"></a>複製檔案</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File.Copy(<span class="string">@&quot;C:\temp\myfile.jpg&quot;</span>, <span class="string">@&quot;D:\temp\myfile.jpg&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a>刪除檔案</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File.Delete(<span class="string">@&quot;C:\temp\myfile.jpg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查檔案是否存在"><a href="#檢查檔案是否存在" class="headerlink" title="檢查檔案是否存在"></a>檢查檔案是否存在</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> exists = File.Exists(<span class="string">@&quot;C:\temp\myfile.jpg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="讀取全部文字"><a href="#讀取全部文字" class="headerlink" title="讀取全部文字"></a>讀取全部文字</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> content = File.ReadAllText(<span class="string">@&quot;C:\temp\myfile.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="讀取全部二進位資料"><a href="#讀取全部二進位資料" class="headerlink" title="讀取全部二進位資料"></a>讀取全部二進位資料</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">byte</span>[] bytes = File.ReadAllBytes(<span class="string">@&quot;C:\temp\myfile.jpg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="FileInfo-類別"><a href="#FileInfo-類別" class="headerlink" title="FileInfo 類別"></a>FileInfo 類別</h2><p><code>FileInfo</code> 類別提供了一系列的實例方法來操作檔案，使用前需要先建立一個 <code>FileInfo</code> 物件。</p>
+<h3 id="建立-FileInfo-物件"><a href="#建立-FileInfo-物件" class="headerlink" title="建立 FileInfo 物件"></a>建立 FileInfo 物件</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileInfo fileInfo = <span class="keyword">new</span> FileInfo(<span class="string">@&quot;C:\temp\myfile.jpg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="複製檔案-1"><a href="#複製檔案-1" class="headerlink" title="複製檔案"></a>複製檔案</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileInfo.CopyTo(<span class="string">@&quot;D:\temp\myfile.jpg&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除檔案-1"><a href="#刪除檔案-1" class="headerlink" title="刪除檔案"></a>刪除檔案</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileInfo.Delete();</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查檔案是否存在-1"><a href="#檢查檔案是否存在-1" class="headerlink" title="檢查檔案是否存在"></a>檢查檔案是否存在</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> exists = fileInfo.Exists;</span><br></pre></td></tr></table></figure>
+
+<h3 id="開啟檔案讀取"><a href="#開啟檔案讀取" class="headerlink" title="開啟檔案讀取"></a>開啟檔案讀取</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream stream = fileInfo.OpenRead();</span><br></pre></td></tr></table></figure>
+
+<h2 id="選擇-File-或-FileInfo"><a href="#選擇-File-或-FileInfo" class="headerlink" title="選擇 File 或 FileInfo"></a>選擇 File 或 FileInfo</h2><ul>
+<li>對於少量的檔案操作，使用 <code>File</code> 類別的靜態方法更為方便，不需創建物件即可直接調用。</li>
+<li>若需執行大量檔案操作，建議使用 <code>FileInfo</code> 類別的實例方法，可減少操作系統安全檢查的開銷，提升應用程序性能。</li>
+</ul>
+<h1 id="C-中的-Directory-與-DirectoryInfo-類別實務應用"><a href="#C-中的-Directory-與-DirectoryInfo-類別實務應用" class="headerlink" title="C# 中的 Directory 與 DirectoryInfo 類別實務應用"></a>C# 中的 Directory 與 DirectoryInfo 類別實務應用</h1><p>在 C# 程式設計中，處理目錄操作時，我們會用到 <code>Directory</code> 與 <code>DirectoryInfo</code> 兩個類別。這兩個類別提供了許多靜態方法和實例方法來執行各種目錄相關的操作。</p>
+<h2 id="Directory-類別"><a href="#Directory-類別" class="headerlink" title="Directory 類別"></a>Directory 類別</h2><p><code>Directory</code> 類別提供了一系列的靜態方法來執行目錄操作。</p>
+<h3 id="建立目錄"><a href="#建立目錄" class="headerlink" title="建立目錄"></a>建立目錄</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Directory.CreateDirectory(<span class="string">@&quot;C:\temp\folder1&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="獲取目錄中的檔案"><a href="#獲取目錄中的檔案" class="headerlink" title="獲取目錄中的檔案"></a>獲取目錄中的檔案</h3><p>使用 <code>GetFiles</code> 方法來獲取指定目錄下的所有檔案，支援搜尋模式與搜尋選項。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>[] files = Directory.GetFiles(<span class="string">@&quot;C:\temp&quot;</span>, <span class="string">&quot;*.jpg&quot;</span>, SearchOption.AllDirectories);</span><br></pre></td></tr></table></figure>
+
+<h3 id="獲取子目錄"><a href="#獲取子目錄" class="headerlink" title="獲取子目錄"></a>獲取子目錄</h3><p>使用 <code>GetDirectories</code> 方法來獲取指定目錄及其子目錄。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>[] directories = Directory.GetDirectories(<span class="string">@&quot;C:\temp&quot;</span>, <span class="string">&quot;*&quot;</span>, SearchOption.AllDirectories);</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查目錄是否存在"><a href="#檢查目錄是否存在" class="headerlink" title="檢查目錄是否存在"></a>檢查目錄是否存在</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> exists = Directory.Exists(<span class="string">@&quot;C:\temp&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="DirectoryInfo-類別"><a href="#DirectoryInfo-類別" class="headerlink" title="DirectoryInfo 類別"></a>DirectoryInfo 類別</h2><p><code>DirectoryInfo</code> 類別提供了一系列的實例方法來進行目錄操作，使用前需要先建立一個 <code>DirectoryInfo</code> 物件。</p>
+<h3 id="建立-DirectoryInfo-物件"><a href="#建立-DirectoryInfo-物件" class="headerlink" title="建立 DirectoryInfo 物件"></a>建立 DirectoryInfo 物件</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryInfo directoryInfo = <span class="keyword">new</span> DirectoryInfo(<span class="string">@&quot;C:\temp&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="獲取目錄中的檔案-1"><a href="#獲取目錄中的檔案-1" class="headerlink" title="獲取目錄中的檔案"></a>獲取目錄中的檔案</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileInfo[] files = directoryInfo.GetFiles(<span class="string">&quot;*.jpg&quot;</span>, SearchOption.AllDirectories);</span><br></pre></td></tr></table></figure>
+
+<h3 id="獲取子目錄-1"><a href="#獲取子目錄-1" class="headerlink" title="獲取子目錄"></a>獲取子目錄</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryInfo[] directories = directoryInfo.GetDirectories(<span class="string">&quot;*&quot;</span>, SearchOption.AllDirectories);</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除目錄"><a href="#刪除目錄" class="headerlink" title="刪除目錄"></a>刪除目錄</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">directoryInfo.Delete(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="選擇-Directory-或-DirectoryInfo"><a href="#選擇-Directory-或-DirectoryInfo" class="headerlink" title="選擇 Directory 或 DirectoryInfo"></a>選擇 Directory 或 DirectoryInfo</h2><ul>
+<li>若需執行少量的目錄操作，直接使用 <code>Directory</code> 類別的靜態方法會更方便快捷。</li>
+<li>若需對特定目錄進行大量操作或需要更細緻的控制，則建議使用 <code>DirectoryInfo</code> 實例方法，可以減少操作系統安全檢查的頻率，提高效能。</li>
+</ul>
+<p>無論是使用 <code>Directory</code> 還是 <code>DirectoryInfo</code>，都可以在 C# 中有效地管理文件系統的目錄結構。建議根據具體需求選擇合適的類別進行操作。</p>
+<pre><code>
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/06/c-text/" rel="prev" title="C# 字串操作方法">
+                  <i class="fa fa-chevron-left"></i> C# 字串操作方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/aliceric27" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
