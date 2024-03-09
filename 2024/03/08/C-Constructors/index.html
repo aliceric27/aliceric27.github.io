@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="C#建構函式">
+    <meta name="description" content="關於 C# 建構函式、宣告 Class 中 多載(Overload) 參數。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C-Constructors">
+<meta property="og:title" content="C# 建構函式與方法多載">
 <meta property="og:url" content="http://example.com/2024/03/08/C-Constructors/">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="C#建構函式">
+<meta property="og:description" content="關於 C# 建構函式、宣告 Class 中 多載(Overload) 參數。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-03-08T15:37:36.000Z">
-<meta property="article:modified_time" content="2024-03-08T15:39:38.115Z">
+<meta property="article:modified_time" content="2024-03-09T08:16:11.668Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="學習">
 <meta name="twitter:card" content="summary">
@@ -37,10 +37,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/03/08/C-Constructors/","path":"2024/03/08/C-Constructors/","title":"C-Constructors"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/03/08/C-Constructors/","path":"2024/03/08/C-Constructors/","title":"C# 建構函式與方法多載"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>C-Constructors | Wei's Blog</title>
+<title>C# 建構函式與方法多載 | Wei's Blog</title>
   
 
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%EF%BC%88Constructor%EF%BC%89%E7%9A%84%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E8%88%87%E5%AF%A6%E6%88%B0"><span class="nav-number">1.</span> <span class="nav-text">建構函式（Constructor）的深入解析與實戰</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">建構函式的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E8%81%B2%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">建構函式的聲明方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E9%A1%9E%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">建構函式的類型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E9%87%8D%E8%BC%89%EF%BC%88Overloading%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">建構函式的重載（Overloading）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E5%AF%A6%E6%88%B0%E6%BC%94%E7%B7%B4"><span class="nav-number">1.5.</span> <span class="nav-text">程式實戰演練</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E4%B8%80%E5%80%8BCustomer%E9%A1%9E%E5%88%A5"><span class="nav-number">1.5.1.</span> <span class="nav-text">定義一個Customer類別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BE%8B%E5%8C%96%E8%88%87%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">實例化與使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%B2%E9%9A%8E%E4%B8%BB%E9%A1%8C%EF%BC%9A%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E9%8F%88%E6%8E%A5"><span class="nav-number">1.6.</span> <span class="nav-text">進階主題：建構函式的鏈接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.6.1.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%EF%BC%88Constructor%EF%BC%89%E7%9A%84%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%E8%88%87%E5%AF%A6%E6%88%B0"><span class="nav-number">1.</span> <span class="nav-text">建構函式（Constructor）的深入解析與實戰</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">建構函式的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E8%81%B2%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">建構函式的聲明方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E9%A1%9E%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">建構函式的類型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E5%A4%9A%E8%BC%89%EF%BC%88Overloading%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">建構函式的多載（Overloading）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E5%AF%A6%E6%88%B0%E6%BC%94%E7%B7%B4"><span class="nav-number">1.5.</span> <span class="nav-text">程式實戰演練</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E4%B8%80%E5%80%8BCustomer%E9%A1%9E%E5%88%A5"><span class="nav-number">1.5.1.</span> <span class="nav-text">定義一個Customer類別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BE%8B%E5%8C%96%E8%88%87%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">實例化與使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%B2%E9%9A%8E%E4%B8%BB%E9%A1%8C%EF%BC%9A%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E9%8F%88%E6%8E%A5"><span class="nav-number">1.6.</span> <span class="nav-text">進階主題：建構函式的鏈接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.6.1.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E6%96%B9%E6%B3%95%E8%A9%B3%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">C# 方法詳解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E7%B0%BD%E5%90%8D"><span class="nav-number">2.1.</span> <span class="nav-text">方法的簽名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%A4%9A%E8%BC%89-Overloading"><span class="nav-number">2.2.</span> <span class="nav-text">方法多載 (Overloading)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A3%BE%E7%AC%A6-params"><span class="nav-number">2.3.</span> <span class="nav-text">修飾符 params</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A3%BE%E7%AC%A6-ref"><span class="nav-number">2.4.</span> <span class="nav-text">修飾符 ref</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A3%BE%E7%AC%A6-out"><span class="nav-number">2.5.</span> <span class="nav-text">修飾符 out</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E8%88%89%E4%BE%8B"><span class="nav-number">2.6.</span> <span class="nav-text">程式碼舉例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">2.7.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref-%E5%92%8C-out-%E5%8F%83%E6%95%B8"><span class="nav-number">2.8.</span> <span class="nav-text">ref 和 out 參數</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ref-%E9%97%9C%E9%8D%B5%E5%AD%97"><span class="nav-number">2.8.1.</span> <span class="nav-text">ref 關鍵字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-%E4%BE%8B%E5%AD%90"><span class="nav-number">2.8.1.1.</span> <span class="nav-text">ref 例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#out-%E9%97%9C%E9%8D%B5%E5%AD%97"><span class="nav-number">2.8.2.</span> <span class="nav-text">out 關鍵字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#out-%E4%BE%8B%E5%AD%90"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">out 例子</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -187,12 +187,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="C-Constructors | Wei's Blog">
+      <meta itemprop="name" content="C# 建構函式與方法多載 | Wei's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C-Constructors
+          C# 建構函式與方法多載
         </h1>
 
         <div class="post-meta-container">
@@ -202,9 +202,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2024-03-08 23:37:36 / 修改時間：23:39:38" itemprop="dateCreated datePublished" datetime="2024-03-08T23:37:36+08:00">2024-03-08</time>
+      <time title="創建時間：2024-03-08 23:37:36" itemprop="dateCreated datePublished" datetime="2024-03-08T23:37:36+08:00">2024-03-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-03-09 16:16:11" itemprop="dateModified" datetime="2024-03-09T16:16:11+08:00">2024-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -226,7 +232,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>C#建構函式</p>
+        <p>關於 C# 建構函式、宣告 Class 中 多載(Overload) 參數。</p>
 <span id="more"></span>
 <hr>
 <h1 id="建構函式（Constructor）的深入解析與實戰"><a href="#建構函式（Constructor）的深入解析與實戰" class="headerlink" title="建構函式（Constructor）的深入解析與實戰"></a>建構函式（Constructor）的深入解析與實戰</h1><h2 id="建構函式的基本概念"><a href="#建構函式的基本概念" class="headerlink" title="建構函式的基本概念"></a>建構函式的基本概念</h2><ul>
@@ -241,7 +247,7 @@
 <li><strong>無參建構函式（預設建構函式）</strong>：不帶任何參數，若未明確定義，C#編譯器會自動生成。</li>
 <li><strong>帶參建構函式</strong>：可接受一個或多個參數，用於更靈活地初始化對象。</li>
 </ul>
-<h2 id="建構函式的重載（Overloading）"><a href="#建構函式的重載（Overloading）" class="headerlink" title="建構函式的重載（Overloading）"></a>建構函式的重載（Overloading）</h2><ul>
+<h2 id="建構函式的多載（Overloading）"><a href="#建構函式的多載（Overloading）" class="headerlink" title="建構函式的多載（Overloading）"></a>建構函式的多載（Overloading）</h2><ul>
 <li><strong>意義</strong>：同一類別中可以有多個名稱相同但參數列表不同的建構函式。</li>
 <li><strong>目的</strong>：提供不同的初始化選項。</li>
 </ul>
@@ -254,6 +260,52 @@
 </ul>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ID;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Order&gt; Orders;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span>() : <span class="title">this</span>(<span class="params"><span class="number">0</span>, <span class="literal">null</span></span>)</span> &#123;</span><br><span class="line">        Orders = <span class="keyword">new</span> List&lt;Order&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span>(<span class="params"><span class="built_in">int</span> id, <span class="built_in">string</span> name</span>)</span> &#123;</span><br><span class="line">        ID = id;</span><br><span class="line">        Name = name;</span><br><span class="line">        <span class="comment">// 這樣確保了無論使用哪個建構函式，Orders都會被初始化</span></span><br><span class="line">        Orders = <span class="keyword">new</span> List&lt;Order&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h1 id="C-方法詳解"><a href="#C-方法詳解" class="headerlink" title="C# 方法詳解"></a>C# 方法詳解</h1><h2 id="方法的簽名"><a href="#方法的簽名" class="headerlink" title="方法的簽名"></a>方法的簽名</h2><ul>
+<li><strong>定義</strong>：方法名稱加上其參數的數量和類型。</li>
+<li><strong>例子</strong>：<code>Move(int x, int y)</code> 在 <code>Point</code> 類中。</li>
+</ul>
+<h2 id="方法多載-Overloading"><a href="#方法多載-Overloading" class="headerlink" title="方法多載 (Overloading)"></a>方法多載 (Overloading)</h2><ul>
+<li><strong>概念</strong>：相同名稱但不同簽名的方法。</li>
+<li><strong>例子</strong>：<ul>
+<li><code>Move(int x, int y)</code>：移動點到指定坐標。</li>
+<li><code>Move(Point p)</code>：移動到另一個點的位置。</li>
+</ul>
+</li>
+</ul>
+<h2 id="修飾符-params"><a href="#修飾符-params" class="headerlink" title="修飾符 params"></a>修飾符 <code>params</code></h2><ul>
+<li><strong>用途</strong>：允許傳入不定數量的參數。</li>
+<li><strong>例子</strong>：<code>Add(params int[] numbers)</code> 可以傳入任意數量的整數。</li>
+</ul>
+<h2 id="修飾符-ref"><a href="#修飾符-ref" class="headerlink" title="修飾符 ref"></a>修飾符 <code>ref</code></h2><ul>
+<li><strong>用途</strong>：參數按引用傳遞，方法內的更改會影響到原始變數。</li>
+<li><strong>例子</strong>：<ul>
+<li>原始狀態：<code>a = 1</code>。</li>
+<li>調用 <code>MyMethod(ref a)</code> 後，<code>a</code> 的值改變。</li>
+</ul>
+</li>
+</ul>
+<h2 id="修飾符-out"><a href="#修飾符-out" class="headerlink" title="修飾符 out"></a>修飾符 <code>out</code></h2><ul>
+<li><strong>用途</strong>：方法可以返回多個值。</li>
+<li><strong>例子</strong>：<code>int.TryParse(string s, out int result)</code> 試圖將字符串轉換為整數，轉換成功則 <code>result</code> 返回轉換後的數值。</li>
+</ul>
+<h2 id="程式碼舉例"><a href="#程式碼舉例" class="headerlink" title="程式碼舉例"></a>程式碼舉例</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Point</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> X &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Y &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法多載例子</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Move</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        X = x;</span><br><span class="line">        Y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Move</span>(<span class="params">Point p</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        X = p.X;</span><br><span class="line">        Y = p.Y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用 params 修飾符</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">params</span> <span class="built_in">int</span>[] numbers</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="built_in">int</span> number <span class="keyword">in</span> numbers)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += number;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 ref 和 out 例子</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">UsageExample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ModifyValue</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">int</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">value</span> += <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">TryParseNumber</span>(<span class="params"><span class="built_in">string</span> input, <span class="keyword">out</span> <span class="built_in">int</span> result</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>.TryParse(input, <span class="keyword">out</span> result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li><strong>方法多載</strong> 提供了靈活性，讓我們可以根據不同的需求調用相同名稱但功能不同的方法。</li>
+<li><strong><code>params</code></strong> 修飾符讓我們可以傳入不定長度的參數，增加了方法的靈活性。</li>
+<li><strong><code>ref</code> 和 <code>out</code></strong> 雖然功能強大，但使用時需謹慎以避免不必要的複雜性或錯誤。</li>
+</ul>
+<hr>
+<h2 id="ref-和-out-參數"><a href="#ref-和-out-參數" class="headerlink" title="ref 和 out 參數"></a><code>ref</code> 和 <code>out</code> 參數</h2><p><code>ref</code> 和 <code>out</code> 是 C# 中的兩個關鍵字，它們用於方法參數，允許方法內部修改外部傳入的變數值。</p>
+<h3 id="ref-關鍵字"><a href="#ref-關鍵字" class="headerlink" title="ref 關鍵字"></a><code>ref</code> 關鍵字</h3><p><code>ref</code> 關鍵字用於按引用傳遞參數。這意味著當你將一個變數以 <code>ref</code> 形式傳遞給一個方法時，你傳遞的是變數的引用，而不是其複本。因此，方法內對該參數的任何修改都會反映到原始變數上。</p>
+<h4 id="ref-例子"><a href="#ref-例子" class="headerlink" title="ref 例子"></a><code>ref</code> 例子</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ModifyValue</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">int</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">value</span> += <span class="number">10</span>; <span class="comment">// 增加 value 的值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> example = <span class="keyword">new</span> ExampleClass();</span><br><span class="line"><span class="built_in">int</span> originalValue = <span class="number">5</span>;</span><br><span class="line">example.ModifyValue(<span class="keyword">ref</span> originalValue);</span><br><span class="line">Console.WriteLine(originalValue); <span class="comment">// 輸出將會是 15</span></span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，<code>originalValue</code> 的值在傳遞給 <code>ModifyValue</code> 方法後被修改，因為它是以 <code>ref</code> 形式傳遞的。</p>
+<h3 id="out-關鍵字"><a href="#out-關鍵字" class="headerlink" title="out 關鍵字"></a><code>out</code> 關鍵字</h3><p><code>out</code> 關鍵字用於方法參數，當你希望方法返回多個值時。使用 <code>out</code> 可以使方法具有多個輸出參數。與 <code>ref</code> 類似，<code>out</code> 也是按引用傳遞參數，但使用 <code>out</code> 時，方法內必須對參數賦值。</p>
+<h4 id="out-例子"><a href="#out-例子" class="headerlink" title="out 例子"></a><code>out</code> 例子</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">TryDivide</span>(<span class="params"><span class="built_in">int</span> dividend, <span class="built_in">int</span> divisor, <span class="keyword">out</span> <span class="built_in">int</span> result</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (divisor == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            result = dividend / divisor;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> example = <span class="keyword">new</span> ExampleClass();</span><br><span class="line"><span class="built_in">int</span> divisionResult;</span><br><span class="line"><span class="keyword">if</span> (example.TryDivide(<span class="number">10</span>, <span class="number">2</span>, <span class="keyword">out</span> divisionResult))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(divisionResult); <span class="comment">// 輸出將會是 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，<code>TryDivide</code> 方法嘗試執行除法運算，並通過 <code>out</code> 參數返回結果。<code>divisionResult</code> 在方法內部被賦值，並在方法外部可以訪問。</p>
 
     </div>
 
