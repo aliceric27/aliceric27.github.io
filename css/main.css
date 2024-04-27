@@ -2554,7 +2554,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #1704e9;
+  background: #4699ee;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2642,7 +2642,6 @@ ul {
 }
 @media screen and (min-width: 1200px) {
   body {
-    background-image: url("/images/20230228_155443.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
