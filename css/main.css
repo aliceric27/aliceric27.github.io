@@ -2554,7 +2554,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #14ff75;
+  background: #1704e9;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2652,10 +2652,12 @@ ul {
     color: #eee;
   }
 }
+/*
 :root {
-  --content-bg-color: rgba(255,255,255,0.97);
-  --body-bg-color: rgba(255,255,255,0);
+  --content-bg-color:rgba(255, 255, 255, 0.97);
+  --body-bg-color:rgba(255, 255, 255, 0)
 }
+*/
 .post-block {
   margin-top: 1rem;
   padding: 0;
