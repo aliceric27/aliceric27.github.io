@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="今天面試提出的基本知識點，有些屬於不熟，有些是學了就忘，整理與紀錄  Hoisting 問題 CSS 相關問題 JS  相關問題">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些面試題與相關知識點">
+<meta property="og:url" content="http://example.com/2023/09/22/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%A9%A6%E9%A1%8C/">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="今天面試提出的基本知識點，有些屬於不熟，有些是學了就忘，整理與紀錄  Hoisting 問題 CSS 相關問題 JS  相關問題">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-09-22T09:09:40.000Z">
+<meta property="article:modified_time" content="2024-04-27T12:58:23.313Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="學習">
+<meta property="article:tag" content="職涯">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/09/22/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%A9%A6%E9%A1%8C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2023/09/22/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%A9%A6%E9%A1%8C/","path":"2023/09/22/一些面試題/","title":"一些面試題與相關知識點"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一些面試題與相關知識點 | Wei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">NaN==Not a Nerd</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%A9%A6%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">面試問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-hoisting"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是 hoisting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let-%E8%88%87-var-%E7%B6%9C%E5%90%88%E9%A1%8C%E5%9E%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">let 與 var 綜合題型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hoisting-%E5%88%B0%E5%BA%95%E6%98%AF%E6%80%8E%E9%BA%BC%E9%81%8B%E4%BD%9C%E7%9A%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">hoisting 到底是怎麼運作的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E6%B8%AC%E8%A9%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">自我測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">1.1.4.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E7%9B%B8%E9%97%9C%E5%9F%BA%E6%9C%AC%E5%95%8F%E9%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">CSS 相關基本問題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E5%9F%BA%E6%9C%AC%E9%81%B8%E6%93%87%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">CSS 基本選擇器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E5%92%8C-%E5%90%8C%E5%B1%A4%E9%81%B8%E6%93%87%E5%99%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">CSS + 和 ~ 同層選擇器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E6%AC%8A%E9%87%8D"><span class="nav-number">1.2.3.</span> <span class="nav-text">CSS權重</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wei"
+      src="https://i.imgur.com/F1F38VG.jpg">
+  <p class="site-author-name" itemprop="name">Wei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aliceric27" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aliceric27" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuki787817@gmail.com" title="E-Mail → mailto:yuki787817@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/22/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%A9%A6%E9%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
+      <meta itemprop="name" content="Wei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一些面試題與相關知識點 | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一些面試題與相關知識點
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-09-22 17:09:40" itemprop="dateCreated datePublished" datetime="2023-09-22T17:09:40+08:00">2023-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-04-27 20:58:23" itemprop="dateModified" datetime="2024-04-27T20:58:23+08:00">2024-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天面試提出的基本知識點，有些屬於不熟，有些是學了就忘，整理與紀錄</p>
+<ul>
+<li>Hoisting 問題</li>
+<li>CSS 相關問題</li>
+<li>JS  相關問題</li>
+</ul>
+<span id="more"></span>
+
+<hr>
+<h1 id="面試問題"><a href="#面試問題" class="headerlink" title="面試問題"></a>面試問題</h1><h2 id="什麼是-hoisting"><a href="#什麼是-hoisting" class="headerlink" title="什麼是 hoisting"></a>什麼是 hoisting</h2><p>屬於 var 宣告優先序問題</p>
+<p>舉簡單例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">//undifiend</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>此例子中可以想像程式這樣執行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">//undifiend</span></span><br><span class="line">a = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>搭配 function 型態的變種則為</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v)</span><br><span class="line">    <span class="keyword">var</span> v = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">5</span>) <span class="comment">//5</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>因為在 function 呼叫時會初始化變數，可以想像程式是這樣執行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> v = <span class="number">5</span></span><br><span class="line">    <span class="keyword">var</span> v</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v)</span><br><span class="line">    v = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">5</span>) <span class="comment">//5</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>可是</strong>我在 log 前不是已經將 v 賦值為<code>undifiend</code>了嘛!?<br>可以簡單舉例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span></span><br><span class="line"><span class="keyword">var</span> a </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+
+<p>最後還有一個小節 ， 當作用域都在全域下時應該怎麼執行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">//fn(a)</span></span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此時 log 出來的 a 會是<code>function</code>而不是<code>undefined</code>。</p>
+<p>基本重點整理</p>
+<ol>
+<li>變數宣告和函式 (fn) 宣告都會提升</li>
+<li>只有宣告<strong>會</strong>提升，賦值<strong>不會</strong>提升</li>
+<li>函式要考慮傳進來的參數也會被初始化</li>
+</ol>
+<h3 id="let-與-var-綜合題型"><a href="#let-與-var-綜合題型" class="headerlink" title="let 與 var 綜合題型"></a>let 與 var 綜合題型</h3><p>這也是我這次面試栽了的地方，因為現在語法多為 let 和 const 宣告，比較少會碰到混合宣告的方式。</p>
+<p>題目如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">  <span class="keyword">let</span> a</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>()</span><br></pre></td></tr></table></figure>
+
+<p>我當下會認為不就是 10 嘛，var在最外面宣告為 10 ，那全域變數 a 就是<code>10</code>。</p>
+<p>答案是<code>ReferenceError: a is not defined</code>。</p>
+<p>面試當下心態直接炸裂，開始慌亂回答了，我難過QQ。</p>
+<h3 id="hoisting-到底是怎麼運作的"><a href="#hoisting-到底是怎麼運作的" class="headerlink" title="hoisting 到底是怎麼運作的?"></a><a target="_blank" rel="noopener" href="https://blog.huli.tw/2018/11/10/javascript-hoisting-and-tdz/#hoisting-%E5%88%B0%E5%BA%95%E6%98%AF%E6%80%8E%E9%BA%BC%E9%81%8B%E4%BD%9C%E7%9A%84">hoisting 到底是怎麼運作的?</a></h3><p>上方標題連結到我的虛擬線上導師 Huli 所撰寫的技術文章<br>篇幅較長就不一一節錄，主要的重點是按規格書的規則下去執行</p>
+<p>拆解以下程式碼其實可以分為兩步驟</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(v)</span><br><span class="line">  <span class="keyword">var</span> v = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在 function 執行期間可以分為兩個階段，首先會先初始化相關參數<br>使用文章內的 VO 概念建立一個初始化物件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">v</span>:<span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後才開始執行 function ，此時的 v 為<code>10</code>當然會印出的就是<code>10</code>。</p>
+<p>將題目轉換一下，套用剛才的方式很簡單的就可以知道印出的分別為<code>10</code>和<code>3</code>。<br>因為在下一行 v 已經被賦值為<code>3</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(v)</span><br><span class="line">  <span class="keyword">var</span> v = <span class="number">3</span></span><br><span class="line">  conosle.<span class="title function_">log</span>(v)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>這樣了解規則後變種型態其實理解也不會很困難</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> v=<span class="number">4</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> a=<span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v)<span class="comment">//10</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">    <span class="keyword">let</span> v = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>首先會先將需要的資料宣告完成這樣理解作用域則為</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">global</span>&#123;</span><br><span class="line">    <span class="attr">v</span>:undifiend</span><br><span class="line">&#125;</span><br><span class="line">test&#123;</span><br><span class="line">    <span class="attr">v</span>:error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因為在 function 作用域內使用 let 宣告時會發現已經有一個全域變數 v 已經被宣告，此時在宣告時會報錯</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> v=<span class="number">4</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">v</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> a=<span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v)<span class="comment">//10</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)<span class="comment">//2</span></span><br><span class="line">    <span class="keyword">var</span> v = <span class="number">3</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v)<span class="comment">//3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(<span class="number">10</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(v)<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<p>改使用 var 於 function 內宣告就會正常，不過此 v &#x3D; 3 再次宣告時，function 作用域的內的 v 已被 3 取代。 </p>
+<h3 id="自我測試"><a href="#自我測試" class="headerlink" title="自我測試"></a>自我測試</h3><p>最後我自己和 chatGPT 自我測試了幾招<br>以下可以自我訓練，並嘗試解釋這段程式碼發生了哪些事</p>
+<div class="tabs" id="mytab"><ul class="nav-tabs"><li class="tab active"><a href="#mytab-1"><i class="fa fa-question"></i>題目1</a></li><li class="tab"><a href="#mytab-2"><i class="fa fa-check"></i>答案</a></li><li class="tab"><a href="#mytab-3"><i class="fa fa-question"></i>題目2</a></li><li class="tab"><a href="#mytab-4"><i class="fa fa-check"></i>答案</a></li><li class="tab"><a href="#mytab-5"><i class="fa fa-question"></i>題目3</a></li><li class="tab"><a href="#mytab-6"><i class="fa fa-check"></i>答案</a></li></ul><div class="tab-content"><div class="tab-pane active" id="mytab-1"><figure class="highlight js"><figcaption><span>題目1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">a</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(b);<span class="comment">//?</span></span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="mytab-2"><p><strong>我的答案</strong></p>
+<div class="note success"><p>一樣是undifiened，此時global區域有一個宣告 a 並且值為<code>4</code><br>test() 作用域內有重複宣告的動作，因此 可以理解為 首先先宣告了 a 且值<code>1</code><br>不過開始執行fn後又重複宣告一次 a ，因為已經有 a 了，所以值還是保持為<code>1</code>，不過接下來就執行賦值並且值為<code>0</code><br>而 b 會因為宣告後直接呼叫，所以還是<code>undifened</code>，然後又將b賦值了<code>2</code></p>
+</div>
+
+<p><strong>ChatGPT</strong></p>
+<div class="note warning"><p>以下僅供參考</p>
+</div>
+<div class="note info"><p>你的解釋非常準確！ 在這段程式碼中，JavaScript的作用域規則導致了這些變數的值和存取行為。 全域作用域中的變數 a 和函數 test 內部的變數 a 具有不同的作用域，因此它們不會互相干擾。</p>
+<p>在呼叫test(1) 後，內部函數test 中的a 變數確實經歷了多次聲明，但由於它們位於不同的作用域中，它們不會相互覆蓋，因此最終結果是a 的值為1（在函數 內部），而b 的值為undefined（因為它在賦值之前被console.log 呼叫）。 然後 b 被賦值為2。 非常清楚的解釋，感謝你的分享！ 如果你還有其他問題，隨時提出。</p>
+</div></div><div class="tab-pane" id="mytab-3"><figure class="highlight js"><figcaption><span>題目2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x); <span class="comment">//?</span></span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">let</span> y = <span class="number">20</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x + y); <span class="comment">//? </span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>();</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="mytab-4"><p><strong>我的答案</strong></p>
+<div class="note success"><p>首先會先宣告 x 和 y 在 foo()內，不過嘗試在賦值前呼叫會導致<code>reference error</code>因為第一行的時候此時x值為<code>undifiened</code></p>
+</div>
+
+<p><strong>ChatGPT</strong></p>
+<div class="note warning"><p>以下僅供參考</p>
+</div>
+<div class="note info"><p>你的答案是正確的！ 在這段程式碼中，變數 x 和 y 雖然在函數 foo() 內部被聲明，但在它們的聲明之前嘗試使用它們會導致引用錯誤（ReferenceError）。 這是因為 let 宣告具有區塊級作用域，因此在宣告之前存取這些變數會觸發暫時性死區（Temporal Dead Zone，TDZ），在 TDZ 內嘗試存取變數會導致參考錯誤。</p>
+<p>因此，在第一行嘗試存取 x 時，它仍然在 TDZ 中，因此會引發引用錯誤。 只有在後面的程式碼中才為 x 賦予了值，才能安全地存取它。</p>
+</div></div><div class="tab-pane" id="mytab-5"><figure class="highlight js"><figcaption><span>題目3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">5</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)<span class="comment">//?</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">apple</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">2</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c+a)<span class="comment">//?</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(<span class="number">1</span>)</span><br><span class="line"><span class="title function_">apple</span>()</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="mytab-6"><p><strong>我的答案</strong></p>
+<div class="note success"><p>這題目輸出為<code>1</code>與<code>5</code></p>
+</div></div></div></div>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>這次面試 hoisting 相關問題讓我把整個面試節奏搞砸了，<br>後續回答也因為比較緊張而導致回答不出來或是亂回答，<br>也希望自己學習這次經驗下次可以表達得更好</p>
+<p>非常感謝 Huli 老師提供的文章分享火力支援菜雞!<br>引用與學習:<br><a target="_blank" rel="noopener" href="https://blog.huli.tw/2018/11/10/javascript-hoisting-and-tdz/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+<hr>
+<h2 id="CSS-相關基本問題"><a href="#CSS-相關基本問題" class="headerlink" title="CSS 相關基本問題"></a>CSS 相關基本問題</h2><p>面是有詢問到 CSS 比較少用到的選擇器，其實滿基本的，但因為實務上少用到所以忘得差不多<br>趁這個機會來複習一下</p>
+<h3 id="CSS-基本選擇器"><a href="#CSS-基本選擇器" class="headerlink" title="CSS 基本選擇器"></a>CSS 基本選擇器</h3><p>首先是基本的 id、class 選擇以及同時符合的規則</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;a&quot;</span> <span class="attr">class</span>=<span class="string">&quot;aclass&quot;</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;b&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bclass&quot;</span>&gt;</span>Bee<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;c&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bclass&quot;</span>&gt;</span>Cat<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dog&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>Dog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 改變所有的元素 */</span></span><br><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">background-color</span>:grey;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* ID選擇器 */</span></span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line"><span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* class選擇器 */</span></span><br><span class="line"><span class="selector-class">.bclass</span>&#123;</span><br><span class="line"><span class="attribute">color</span>:green</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 同時符合兩個條件，不需要空格 */</span></span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.bclass</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellow</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 空格為選擇子項可以是id、class、標籤 */</span></span><br><span class="line"><span class="selector-class">.dog</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 下一層選擇器，這個和空格不同的是只會影響第一個子層的元素 */</span></span><br><span class="line"><span class="selector-class">.dog</span> &gt; <span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面是比較基本的選擇器，也覆蓋 8 成以上使用情境<br>接下來會複習比較少用到的</p>
+<h3 id="CSS-和-同層選擇器"><a href="#CSS-和-同層選擇器" class="headerlink" title="CSS + 和 ~ 同層選擇器"></a>CSS + 和 ~ 同層選擇器</h3><p>這兩個選擇器只有在同層下才會有作用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>bee<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span></span><br><span class="line">  cat</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&#x27;d&#x27;</span>&gt;</span>cat<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>dog<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 只有.a class 後方所有的.a都會變色*/</span></span><br><span class="line"><span class="selector-class">.a</span> ~ <span class="selector-class">.a</span>&#123;</span><br><span class="line"><span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果將 class 改為<code>+</code>則會選擇在設定條件的同一層的<strong>下一個</strong>符合的元素來做對應改變。<br>如果同層中間有其他元素中斷了這個規則，那他就不會被選擇到</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>bee<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>dog<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&#x27;a&#x27;</span>&gt;</span>pig<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 只有 bee 和 dog 會改變顏色*/</span></span><br><span class="line"><span class="selector-class">.a</span> + <span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS權重"><a href="#CSS權重" class="headerlink" title="CSS權重"></a>CSS權重</h3><p>基本上 CSS 權重區分如下</p>
+<p><code>!&gt;id&gt;class&gt;tag</code></p>
+<p>CSS 會將所有權重下去做計算</p>
+<p>套用的規則會根據 CSS 設定的權重下去評分，如過評分都一樣則 CSS 樣式會由後面的設定覆蓋前面的設定</p>
+<p>以下是簡單分數評斷</p>
+<p>沒有任何定義的權重分是這個樣子<br><code>ID 0 , Class 0 , tag 0</code><br>假設最前方 ID 為 1 則後方都不用比較，權重一定最高<br><code>ID 1 , Class 0 , tag 0</code></p>
+<p>可以想像一個 ID 是百元鈔、一個 class 是十元硬幣、tag為一元硬幣這樣下去比較</p>
+<p>舉一個簡單的例子，假設以下都是定義同一個物件最後顏色會是 blue<br>因為 ID 權重為 <code>1</code>，下面的三個 class 加起來為<code>3</code>還是被 ID 權重蓋過去</p>
+<p>用剛剛的貨幣理論， 100 元 &gt; 30 元這種感覺</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-id">#apple</span>&#123;</span><br><span class="line"><span class="attribute">color</span>:blue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.appple</span> <span class="selector-class">.bee</span> <span class="selector-class">.cat</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellow</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>相反的如果權重都相同，就會用後面設定的元素覆蓋前面設定的元素<br>下面輸出會因為權重相同，所以最後結果為<code>yellow</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.apple</span> &gt; <span class="selector-class">.bee</span> &gt; <span class="selector-class">.cat</span>&#123;</span><br><span class="line"><span class="attribute">color</span>:blue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.appple</span> <span class="selector-class">.bee</span> <span class="selector-class">.cat</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellow</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最後有個例外千元鈔，那就是<code>inline-style</code><br>這個權重是蓋在ID上方的，新增完這個權重則計算方式變為下表<br><code>inline-style &gt; ID &gt; class &gt; tag</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&#x27;color:red&#x27;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最最最後有個超級萬元鈔，那就是<code>!important</code>語法<br>這個萬元鈔殺手鐧可以覆蓋所有權重</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.apple</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:red <span class="meta">!important</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#apple</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:blue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就算上面請了百元鈔 ID 大哥，和位置放後也敵不過<code>important</code>大哥，結果為會顯示<code>紅色</code><br>最後權重區分權重表如下</p>
+<div class="note default"><p>! &gt; inline-style &gt; id &gt; class &gt; tag</p>
+</div>
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BF%83%E5%BE%97/" rel="tag"># 心得</a>
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
+              <a href="/tags/%E8%81%B7%E6%B6%AF/" rel="tag"># 職涯</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/22/Nuxt-3%20%E6%95%B4%E7%90%86/" rel="prev" title="Nuxt 3 資源整理">
+                  <i class="fa fa-chevron-left"></i> Nuxt 3 資源整理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/02/28/%E9%9B%A2%E8%81%B7%E5%BF%83%E5%BE%97-Part2/" rel="next" title="離職心得 Part2">
+                  離職心得 Part2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/aliceric27" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
