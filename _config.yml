@@ -106,6 +106,6 @@ deploy:
 - type: git # 使用 Git 部署
   repo: https://github.com/aliceric27/aliceric27.github.io.git # 你的儲存庫 clone
   branch: gh-pages # 儲存庫分支
-  message: "Update blog - 2024-04-27 23:21:35" # Commit 訊息
+  message: "Update blog - 2024-04-27 23:58:16" # Commit 訊息
 
 command: bash deploy.sh
