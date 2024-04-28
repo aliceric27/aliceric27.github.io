@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="學習 Vue 2 基礎的筆記，以每個小節做一個概念統整">
 <meta property="og:type" content="article">
@@ -96,71 +96,6 @@
 
 
 </header>
-        
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E8%AD%98-Vue"><span class="nav-number">1.</span> <span class="nav-text">初識 Vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-%E6%A8%A1%E6%9D%BF%E8%AA%9E%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Vue 模板語法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%80%BC%E8%AA%9E%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">插值語法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%AA%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">指令語法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B6%81%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">資料綁定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%90%91%E7%B6%81%E5%AE%9A-v-bind-%EF%BC%9A%E8%B3%87%E6%96%99%E5%8F%AA%E8%83%BD%E5%BE%9Edata%E6%B5%81%E5%90%91%E9%A0%81%E9%9D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">單向綁定 (v-bind)：資料只能從data流向頁面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%99%E5%90%91%E7%B6%81%E5%AE%9A-v-model-%EF%BC%9A%E8%B3%87%E6%96%99%E4%B8%8D%E5%83%85%E8%83%BD%E5%BE%9Edata%E6%B5%81%E5%90%91%E9%A0%81%E9%9D%A2%EF%BC%8C%E9%82%84%E5%8F%AF%E4%BB%A5%E5%BE%9E%E9%A0%81%E9%9D%A2%E6%B5%81%E5%90%91-data"><span class="nav-number">3.2.</span> <span class="nav-text">雙向綁定 (v-model)：資料不僅能從data流向頁面，還可以從頁面流向 data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-%E8%88%87-el-%E7%9A%842%E7%A8%AE%E5%AF%AB%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">data 與 el 的2種寫法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el"><span class="nav-number">4.1.</span> <span class="nav-text">el</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data"><span class="nav-number">4.2.</span> <span class="nav-text">data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">MVVM模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BB%A3%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">資料代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">事件處理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">7.1.</span> <span class="nav-text">事件基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A3%BE%E7%AC%A6%E8%99%9F"><span class="nav-number">7.2.</span> <span class="nav-text">事件修飾符號</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E5%B1%AC%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">計算屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">8.0.1.</span> <span class="nav-text">總結</span></a></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Wei"
-      src="https://i.imgur.com/F1F38VG.jpg">
-  <p class="site-author-name" itemprop="name">Wei</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">36</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/aliceric27" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aliceric27" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:yuki787817@gmail.com" title="E-Mail → mailto:yuki787817@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
-    
-  </aside>
-
-
     </div>
 
     <div class="main-inner post posts-expand">
@@ -446,12 +381,6 @@
   </footer>
 
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
