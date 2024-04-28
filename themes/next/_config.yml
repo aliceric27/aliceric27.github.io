@@ -583,7 +583,7 @@ mediumzoom: false
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://apoorv.pro/lozad.js/demo/
-lazyload: false
+lazyload: true
 
 # Automatically insert whitespace between CJK and half-width characters.
 # For more information: https://github.com/vinta/pangu.js
@@ -616,13 +616,13 @@ quicklink:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: true
+  enable: false
   async: false
   transition:
     # All available transition variants: https://theme-next.js.org/animate/
     menu_item: fadeInDown
-    post_block: fadeIn
-    post_header: fadeInDown
+    #post_block: fadeIn
+    #post_header: fadeInDown
     post_body: fadeInDown
     coll_header: fadeInLeft
     # Only for Pisces | Gemini.
