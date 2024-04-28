@@ -15,9 +15,8 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="上一篇我們了解了指定型別的三種方法，那有哪些型別可以使用呢， 今天來整理 TypeScript 有可能會使用到的資料型別。">
 <meta property="og:type" content="article">
@@ -73,7 +72,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -215,103 +214,103 @@
 <td><strong>number</strong></td>
 <td>primitive</td>
 <td>定義數值型別。</td>
-<td><img src="https://i.imgur.com/2ubY3sv.png" alt="圖 1"></td>
+<td><img data-src="https://i.imgur.com/2ubY3sv.png" alt="圖 1"></td>
 </tr>
 <tr>
 <td><strong>string</strong></td>
 <td>primitive</td>
 <td>定義字串型別。</td>
-<td><img src="https://i.imgur.com/P1ScMWc.png" alt="圖 2"></td>
+<td><img data-src="https://i.imgur.com/P1ScMWc.png" alt="圖 2"></td>
 </tr>
 <tr>
 <td><strong>boolean</strong></td>
 <td>primitive</td>
 <td>定義布林值型別。</td>
-<td><img src="https://i.imgur.com/cMJyppt.png" alt="圖 3"></td>
+<td><img data-src="https://i.imgur.com/cMJyppt.png" alt="圖 3"></td>
 </tr>
 <tr>
 <td><strong>null</strong></td>
 <td>primitive</td>
 <td>定義空值型別， 亦可賦值給所有型別(嚴謹模式則無法)。</td>
-<td><img src="https://i.imgur.com/jfsIZxP.png" alt="圖 4"></td>
+<td><img data-src="https://i.imgur.com/jfsIZxP.png" alt="圖 4"></td>
 </tr>
 <tr>
 <td><strong>undefined</strong></td>
 <td>primitive</td>
 <td>定義 undefined 型別，亦可賦值給所有型別(嚴謹模式則無法)。</td>
-<td><img src="https://i.imgur.com/cSLtcwx.png" alt="圖 5"></td>
+<td><img data-src="https://i.imgur.com/cSLtcwx.png" alt="圖 5"></td>
 </tr>
 <tr>
 <td><strong>object</strong></td>
 <td>object</td>
 <td>定義物件型別。</td>
-<td><img src="https://i.imgur.com/LWoyFFs.png" alt="圖 6"></td>
+<td><img data-src="https://i.imgur.com/LWoyFFs.png" alt="圖 6"></td>
 </tr>
 <tr>
 <td><strong>arrays</strong></td>
 <td>object</td>
 <td>可使用「型別 + 方括號」或陣列泛型來表示陣列。</td>
-<td><img src="https://i.imgur.com/BTdolS1.png" alt="圖 7"></td>
+<td><img data-src="https://i.imgur.com/BTdolS1.png" alt="圖 7"></td>
 </tr>
 <tr>
 <td><strong>function</strong></td>
 <td>object</td>
 <td>一個函式有輸入和輸出，可以針對參數(輸入)及返回值(輸出)進行型別規範。</td>
-<td><img src="https://i.imgur.com/uaulHOc.png" alt="圖 8"></td>
+<td><img data-src="https://i.imgur.com/uaulHOc.png" alt="圖 8"></td>
 </tr>
 <tr>
 <td><strong>any</strong></td>
 <td>TS</td>
 <td>表示允許賦值為任意型別。</td>
-<td><img src="https://i.imgur.com/Jb3Wq7z.png" alt="圖 9"></td>
+<td><img data-src="https://i.imgur.com/Jb3Wq7z.png" alt="圖 9"></td>
 </tr>
 <tr>
 <td><strong>unknown</strong></td>
 <td>TS</td>
 <td>unknown 和 any 一樣可以接受任何型別賦值，但 any 可以賦值給任何型別，unknown 只能賦值給 any 和自己。</td>
-<td><img src="https://i.imgur.com/j9mF1wH.png" alt="圖 10"></td>
+<td><img data-src="https://i.imgur.com/j9mF1wH.png" alt="圖 10"></td>
 </tr>
 <tr>
 <td><strong>void</strong></td>
 <td>TS</td>
 <td>表示沒有任何返回值的函式。</td>
-<td><img src="https://i.imgur.com/YIKNoGQ.png" alt="圖 11"></td>
+<td><img data-src="https://i.imgur.com/YIKNoGQ.png" alt="圖 11"></td>
 </tr>
 <tr>
 <td><strong>never</strong></td>
 <td>TS</td>
 <td>來表示不應該存在的狀態的型別，一般用於錯誤處理函式。</td>
-<td><img src="https://i.imgur.com/E9PemGd.png" alt="圖 12"></td>
+<td><img data-src="https://i.imgur.com/E9PemGd.png" alt="圖 12"></td>
 </tr>
 <tr>
 <td><strong>union types</strong></td>
 <td>TS</td>
 <td>聯合型別(union type) 使用｜表示其定義的值可以為多種型別。</td>
-<td><img src="https://i.imgur.com/Z0SXbk8.png" alt="圖 13"></td>
+<td><img data-src="https://i.imgur.com/Z0SXbk8.png" alt="圖 13"></td>
 </tr>
 <tr>
 <td><strong>intersection types</strong></td>
 <td>TS</td>
 <td>交集型別(intersection type) 使用 &amp; 表示其定義的值都必須符合多種型別。</td>
-<td><img src="https://i.imgur.com/VxrTMUg.png" alt="圖 17"></td>
+<td><img data-src="https://i.imgur.com/VxrTMUg.png" alt="圖 17"></td>
 </tr>
 <tr>
 <td><strong>literal types</strong></td>
 <td>TS</td>
 <td>某些特殊的”值”可以當作”型別”來使用。</td>
-<td><img src="https://i.imgur.com/6hT0VNB.png" alt="圖 19"></td>
+<td><img data-src="https://i.imgur.com/6hT0VNB.png" alt="圖 19"></td>
 </tr>
 <tr>
 <td><strong>tuple</strong></td>
 <td>TS</td>
 <td>tuple 就是合併了不同型別的物件且符合<strong>固定長度</strong>的陣列</td>
-<td><img src="https://i.imgur.com/GlOy6bz.png" alt="圖 15"></td>
+<td><img data-src="https://i.imgur.com/GlOy6bz.png" alt="圖 15"></td>
 </tr>
 <tr>
 <td><strong>enum</strong></td>
 <td>TS</td>
 <td>列舉（enum）型別可以用來管理多個同系列的常數，作為狀態判斷使用。</td>
-<td><img src="https://i.imgur.com/qLdWkQT.png" alt="圖 16"></td>
+<td><img data-src="https://i.imgur.com/qLdWkQT.png" alt="圖 16"></td>
 </tr>
 </tbody></table>
 <p>參考：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10264244">【TypeScript 學起來】資料型別那些事 : 總覽</a></p>
@@ -388,8 +387,9 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
   
 

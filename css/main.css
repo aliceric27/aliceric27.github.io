@@ -1652,14 +1652,6 @@ pre code {
   margin-top: 40px;
   text-align: left;
 }
-.use-motion .post-block,
-.use-motion .pagination,
-.use-motion .comments {
-  visibility: hidden;
-}
-.use-motion .post-header {
-  visibility: hidden;
-}
 .use-motion .post-body {
   visibility: hidden;
 }
@@ -2553,7 +2545,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #d5e473;
+  background: #308e9a;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2602,6 +2594,25 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+.post-nav {
+  border: 0;
+}
+.pagination {
+  border: 0;
+}
+.pagination .page-number {
+  border-color: '';
+  color: #000;
+}
+.pagination .page-number.current {
+  color: #000;
+}
+#mytab > ul > li:nth-child(6) > a::after {
+  background-color: rgba(255,255,255,0);
+}
+.posts-expand .post-tags a {
+  background: #dcdada;
 }
 body > main > div.main-inner.post.posts-expand > div > article > div > p:nth-child(1) {
   text-align: center;
