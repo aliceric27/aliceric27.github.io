@@ -2553,7 +2553,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #65e001;
+  background: #26ff0b;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2602,6 +2602,9 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+body > main > div.main-inner.post.posts-expand > div > article > div > p:nth-child(1) {
+  text-align: center;
 }
 .column {
   background: #e9e8e8;
