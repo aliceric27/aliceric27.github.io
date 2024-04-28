@@ -1,3 +1,73 @@
+.column{
+  background:#e9e8e8;
+}
+
+.post-body a{
+  //border-bottom: 1px solid $link-decoration-color;
+  //color: var(--link-color);
+  // For a:not(:any-link)
+  color:#3a5983;
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+  word-wrap();
+
+  &:hover {
+    border-bottom-color: var(--link-hover-color);
+    color: var(--link-hover-color);
+  }
+}
+
+
+.post-button a{
+  //border-bottom: 1px solid $link-decoration-color;
+  color: var(--link-color);
+  // For a:not(:any-link)
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+  word-wrap();
+
+  &:hover {
+    border-bottom-color: var(--link-hover-color);
+    color: var(--link-hover-color);
+  }
+}
+.post-body h2{
+    font-size: 1.375em;
+    border-bottom: 1px solid;
+    border-color: #d7d3d3;
+    padding-bottom: 1rem;
+}
+
+h3::before {
+    content: '###';
+    margin: 5px;
+    color: #4783b7;
+}
+
+h4::before {
+    content: '####';
+    margin: 5px;
+    color: #4783b7;
+}
+
+h5::before {
+    content: '#####';
+    margin: 5px;
+    color: #4783b7;
+}
+
+h6::before {
+    content: '######';
+    margin: 5px;
+    color: #4783b7;
+}
+
+footer{
+  display:none;
+}
+
 @counter-style repeating-emoji {
   system: cyclic;
   symbols: "\1F4CD"; // unicode code point
