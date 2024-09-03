@@ -381,14 +381,13 @@ figure.highlight .table-container {
   position: relative;
 }
 .copy-btn {
-  color: #333;
+  color: #fff;
   cursor: pointer;
   line-height: 1.6;
   opacity: 0;
   padding: 2px 6px;
   position: absolute;
   transition: opacity 0.2s ease-in-out;
-  background: #fff;
   border: 0;
   font-size: 0.8125em;
   right: 0;
@@ -2545,7 +2544,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #82ffff;
+  background: #1dffff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
