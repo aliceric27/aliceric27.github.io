@@ -18,25 +18,25 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="「HTML 的 &lt;script&gt;當中，async與defer有什麼差別？」">
+    <meta name="description" content="HTML 的 &lt;script&gt;當中，async與defer有什麼差別？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&lt; script &gt;的 async 與 defer 有什麼不同">
-<meta property="og:url" content="http://example.com/2024/09/04/script%E8%BC%89%E5%85%A5%E9%A0%86%E5%BA%8F/">
+<meta property="og:url" content="http://example.com/2024/09/04/async%20%E8%88%87%20defer%20%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C/">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="「HTML 的 &lt;script&gt;當中，async與defer有什麼差別？」">
+<meta property="og:description" content="HTML 的 &lt;script&gt;當中，async與defer有什麼差別？">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-09-04T06:43:04.000Z">
-<meta property="article:modified_time" content="2024-09-04T09:58:14.000Z">
+<meta property="article:modified_time" content="2024-09-06T06:58:28.788Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Front-end">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2024/09/04/script%E8%BC%89%E5%85%A5%E9%A0%86%E5%BA%8F/">
+<link rel="canonical" href="http://example.com/2024/09/04/async%20%E8%88%87%20defer%20%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/09/04/script%E8%BC%89%E5%85%A5%E9%A0%86%E5%BA%8F/","path":"2024/09/04/script載入順序/","title":"\u003c script >的 async 與 defer 有什麼不同"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/09/04/async%20%E8%88%87%20defer%20%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C/","path":"2024/09/04/async 與 defer 有什麼不同/","title":"\u003c script >的 async 與 defer 有什麼不同"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>< script >的 async 與 defer 有什麼不同 | Wei's Blog</title>
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -173,7 +173,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/04/script%E8%BC%89%E5%85%A5%E9%A0%86%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/04/async%20%E8%88%87%20defer%20%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.imgur.com/F1F38VG.jpg">
@@ -201,9 +201,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2024-09-04 14:43:04 / 修改時間：17:58:14" itemprop="dateCreated datePublished" datetime="2024-09-04T14:43:04+08:00">2024-09-04</time>
+      <time title="創建時間：2024-09-04 14:43:04" itemprop="dateCreated datePublished" datetime="2024-09-04T14:43:04+08:00">2024-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-09-06 14:58:28" itemprop="dateModified" datetime="2024-09-06T14:58:28+08:00">2024-09-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -225,11 +231,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>「HTML 的 <code>&lt;script&gt;</code>當中，<code>async</code>與<code>defer</code>有什麼差別？」</p>
+        <p>HTML 的 <code>&lt;script&gt;</code>當中，<code>async</code>與<code>defer</code>有什麼差別？</p>
 <span id="more"></span>
-
-
-
+<hr>
 <p>HTML 在生成 DOM 時由上到下進行解析並生成，當遇到<code>&lt;script&gt;</code>標籤時，則會暫停載入 DOM 的生成，開始執行<code>&lt;script&gt;</code>腳本，執行完畢後才會繼續生成 DOM 。</p>
 <p><code>async</code>和<code>defer</code>則是更靈活的載入<code>&lt;script&gt;</code>方法，可以告訴瀏覽器，這兩個屬性都是在跟瀏覽器說，不用等腳本的載入，繼續建構 DOM。這讓 DOM 的建構與腳本的載入能夠同步進行，讓使用者體驗可以更好。</p>
 <p>使用方式</p>
@@ -246,6 +250,7 @@
 <p>適用情況：<code>async</code>適合不依賴於 DOM 或其他腳本的情境，例如執行統計分析、廣告載入等。</p>
 <h3 id="額外考量"><a href="#額外考量" class="headerlink" title="額外考量"></a>額外考量</h3><p>阻塞行為：儘管<code>async</code>和<code>defer</code>都不會阻塞 HTML 的解析，但<code>async</code>屬性的腳本在執行時會暫停 HTML 的解析。因此，在大量<code>async</code>腳本並行加載的情況下，可能會對頁面加載速度產生影響。</p>
 <p>兼容性與支援度：大多數現代瀏覽器都完全支援<code>async</code>和<code>defer</code>屬性，但在較老的瀏覽器中可能會有一些兼容性問題。因此，在使用這些屬性時，也需要考慮目標用戶的瀏覽器版本。</p>
+<p><a target="_blank" rel="noopener" href="https://www.explainthis.io/zh-hant/swe/fe-script-async-defer-difference"> &lt; script &gt;的 async 與 defer 有什麼不同？</a></p>
 
     </div>
 
@@ -267,6 +272,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/09/05/font%E4%BD%BF%E7%94%A8%E5%96%AE%E4%BD%8D/" rel="next" title="px、em、rem 差異">
+                  px、em、rem 差異 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

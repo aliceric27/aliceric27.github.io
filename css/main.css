@@ -700,15 +700,6 @@ pre code {
 .post-body .note :last-child {
   margin-bottom: 0;
 }
-.post-body .note:not(.no-icon) {
-  padding-left: 2.5em;
-}
-.post-body .note:not(.no-icon)::before {
-  font-size: 1.5em;
-  left: 0.3em;
-  position: absolute;
-  top: calc(50% - 1em);
-}
 .post-body .note.default {
   background: #f7f7f7;
   border-left-color: #777;
@@ -718,12 +709,6 @@ pre code {
 .post-body .note.default h4,
 .post-body .note.default h5,
 .post-body .note.default h6 {
-  color: #777;
-}
-.post-body .note.default:not(.no-icon)::before {
-  content: '\f0a9';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
   color: #777;
 }
 .post-body .note.primary {
@@ -737,12 +722,6 @@ pre code {
 .post-body .note.primary h6 {
   color: #6f42c1;
 }
-.post-body .note.primary:not(.no-icon)::before {
-  content: '\f055';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  color: #6f42c1;
-}
 .post-body .note.info {
   background: #eef7fa;
   border-left-color: #428bca;
@@ -752,12 +731,6 @@ pre code {
 .post-body .note.info h4,
 .post-body .note.info h5,
 .post-body .note.info h6 {
-  color: #428bca;
-}
-.post-body .note.info:not(.no-icon)::before {
-  content: '\f05a';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
   color: #428bca;
 }
 .post-body .note.success {
@@ -771,12 +744,6 @@ pre code {
 .post-body .note.success h6 {
   color: #5cb85c;
 }
-.post-body .note.success:not(.no-icon)::before {
-  content: '\f058';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  color: #5cb85c;
-}
 .post-body .note.warning {
   background: #fdf8ea;
   border-left-color: #f0ad4e;
@@ -788,12 +755,6 @@ pre code {
 .post-body .note.warning h6 {
   color: #f0ad4e;
 }
-.post-body .note.warning:not(.no-icon)::before {
-  content: '\f06a';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  color: #f0ad4e;
-}
 .post-body .note.danger {
   background: #fcf1f2;
   border-left-color: #d9534f;
@@ -803,12 +764,6 @@ pre code {
 .post-body .note.danger h4,
 .post-body .note.danger h5,
 .post-body .note.danger h6 {
-  color: #d9534f;
-}
-.post-body .note.danger:not(.no-icon)::before {
-  content: '\f056';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
   color: #d9534f;
 }
 .post-body .tabs {
@@ -2544,7 +2499,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #29fc33;
+  background: #ffff5d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2662,7 +2617,6 @@ body > main > div.main-inner.post.posts-expand > div > article > div > p:nth-chi
 }
 .post-body h2 {
   font-size: 1.375em;
-  border-bottom: 1px solid;
   border-color: #d7d3d3;
 }
 h3::before {
@@ -2703,10 +2657,13 @@ footer {
   font-weight: 500;
 }
 code {
-  padding: 0, 1rem, 0, 1rem;
-  background-color: #d5d5d5;
-  color: #eb3f3f;
-  font-weight: 500;
+  color: #476cb6;
+  background-color: #dcdcdc;
+  border-radius: 3px;
+/* border: 1px solid rgba(180, 177, 177, 0.541); */
+  font-size: 0.9rem;
+  padding: 2px 3px;
+  font-weight: bold;
 }
 .note ul {
   list-style: disc;
@@ -2714,6 +2671,7 @@ code {
 }
 ul {
   list-style: disc;
+  padding-left: 1rem;
 }
 .highlight-container,
 .highlight,
