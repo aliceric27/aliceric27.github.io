@@ -2499,7 +2499,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #01fbc1;
+  background: #ffff2b;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2657,8 +2657,8 @@ footer {
   font-weight: 500;
 }
 code {
-  color: #476cb6;
-  background-color: #dcdcdc;
+  color: #c14747;
+  background-color: #d4cece;
   border-radius: 3px;
 /* border: 1px solid rgba(180, 177, 177, 0.541); */
   font-size: 0.9rem;
