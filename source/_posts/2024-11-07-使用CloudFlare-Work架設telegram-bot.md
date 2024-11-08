@@ -12,8 +12,6 @@ categories:
 
 <!-- more -->
 
-![image.7sn87x1wid.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/image.7sn87x1wid.webp)
-
 ------
 
 ## 登入/註冊 CloudFlare
