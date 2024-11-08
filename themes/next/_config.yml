@@ -357,9 +357,9 @@ theme_color:
 # Override browsers' default behavior.
 body_scrollbar:
   # Place the scrollbar over the content.
-  overlay: false
+  overlay: true
   # Present the scrollbar even if the content is not overflowing.
-  stable: false
+  stable: true
 
 codeblock:
   # Code Highlight theme
