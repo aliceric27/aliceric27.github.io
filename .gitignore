@@ -1,0 +1,5 @@
+node_modules
+.deploy_git
+.github
+db.json
+.deploy_git
