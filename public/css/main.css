@@ -186,7 +186,7 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -207,7 +207,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -551,7 +551,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: Fira Code, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -1125,7 +1125,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Grenze Gotisch, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1263,7 +1263,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #33fffc;
+  background: #b106e8;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -1853,7 +1853,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2039,7 +2039,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2626,4 +2626,29 @@ header.header {
     width: 50px;
     height: 50px;
   }
+}
+@media (min-width: 992px) {
+  .post-body {
+    text-align: left;
+  }
+}
+code {
+  background-color: #d5d5d5;
+  color: #c20e0e;
+  padding: 2px 5px;
+}
+.column {
+  background-color: #fff;
+}
+.posts-expand .post-block:not(:first-of-type) {
+  margin-top: 7vh;
+  position: relative;
+}
+.site-brand-container {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0;
+}
+.site-title {
+  font-size: 2em;
 }
