@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>事件冒泡、事件捕獲 | Wei&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+  
+  <meta name="description" content="介紹事件冒泡和事件捕獲，並解釋如何使用 addEventListener 來控制事件流。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件冒泡、事件捕獲">
+<meta property="og:url" content="http://example.com/2024/10/11/2024-10-11-%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1/index.html">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="介紹事件冒泡和事件捕獲，並解釋如何使用 addEventListener 來控制事件流。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/images/eventflow.png">
+<meta property="article:published_time" content="2024-10-11T03:37:25.000Z">
+<meta property="article:modified_time" content="2024-11-08T03:57:46.986Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Front-end">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/images/eventflow.png"><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1 id="title">
+    <a href="/">Wei&#39;s Blog</a>
+  </h1>
+  <nav>
+    
+    
+      
+      <a class="nav-link" href="/">Home</a>
+    
+      
+        <span class="nav-spacer">×</span>
+      
+      <a class="nav-link" href="/archives">Archives</a>
+    
+    
+  </nav>
+</header>
+
+    <div id="content">
+      <article id="post-2024-10-11-事件冒泡" class="article article-type-post" itemprop="blogPost" itemscope>
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 class="article-title" itemprop="headline name">
+      事件冒泡、事件捕獲
+    </h2>
+  
+
+
+        <div class="article-meta">
+          <time class="article-date" datetime="2024-10-11T03:37:25.000Z" itemprop="datePublished">十月 11, 2024, 11:37 中午</time>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <p>介紹事件冒泡和事件捕獲，並解釋如何使用 addEventListener 來控制事件流。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="什麼是事件冒泡？"><a href="#什麼是事件冒泡？" class="headerlink" title="什麼是事件冒泡？"></a>什麼是事件冒泡？</h2><p>事件冒泡是指當一個元素觸發事件時，事件會從這個元素逐層往外傳遞。例如，當你點擊按鈕時，事件會先在按鈕上觸發，然後傳到外層的 <code>div</code>，再傳到更外層的元素（例如 <code>body</code>）。這樣我們可以在較高層的元素上處理事件，而不用為每個小元素都加監聽器，從而減少重複代碼、提升性能和維護性。</p>
+<pre><code class="html">&lt;div id=&quot;container&quot;&gt;
+  &lt;button id=&quot;button&quot;&gt;Click Me&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">document.getElementById(&#39;container&#39;).addEventListener(&#39;click&#39;, () =&gt; &#123;
+  console.log(&#39;Container clicked&#39;);
+&#125;);
+
+document.getElementById(&#39;button&#39;).addEventListener(&#39;click&#39;, (e) =&gt; &#123;
+  console.log(&#39;Button clicked&#39;);
+&#125;);
+</code></pre>
+<p>當你點擊按鈕時，控制台會先顯示 “Button clicked”，然後顯示 “Container clicked”，這就是事件冒泡的效果。</p>
+<h2 id="什麼是事件捕獲？"><a href="#什麼是事件捕獲？" class="headerlink" title="什麼是事件捕獲？"></a>什麼是事件捕獲？</h2><p>事件捕獲與冒泡相反，事件從最外層元素開始逐層往內傳遞，直到目標元素。例如，當你點擊 <code>inner</code> 這個 <code>div</code> 時，如果使用事件捕獲，事件會先從最外層的 <code>outer</code> 開始，再傳遞到 <code>inner</code>。事件捕獲可以用來在事件到達目標元素之前進行特殊處理。</p>
+<h2 id="事件流的圖解"><a href="#事件流的圖解" class="headerlink" title="事件流的圖解"></a>事件流的圖解</h2><p>下面這個圖表展示了事件捕獲和事件冒泡的過程：</p>
+<p><img src="https://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/images/eventflow.png" alt="事件流圖解"></p>
+<ul>
+<li><strong>捕獲階段</strong>（Capture Phase）：事件從 <code>document</code> 開始，逐層往下傳遞，直到目標元素。</li>
+<li><strong>目標階段</strong>（Target Phase）：事件到達目標元素。</li>
+<li><strong>冒泡階段</strong>（Bubbling Phase）：事件從目標元素逐層往上傳遞，直到 <code>document</code>。</li>
+</ul>
+<h2 id="使用-addEventListener"><a href="#使用-addEventListener" class="headerlink" title="使用 addEventListener"></a>使用 addEventListener</h2><p>在 JavaScript 中，我們可以使用 addEventListener 為元素添加事件監聽器。addEventListener 方法有三個主要參數以及一個可選的物件參數：</p>
+<ol>
+<li><strong>事件類型</strong>（例如 <code>click</code>）：指定要監聽的事件。</li>
+<li><strong>事件處理函數</strong>：當事件發生時執行的函數。</li>
+<li><strong>可選參數（捕獲或冒泡）</strong>：布爾值，決定事件是在捕獲階段還是冒泡階段處理。<code>true</code> 表示捕獲，<code>false</code> 或不傳表示冒泡。</li>
+<li><strong>可選參數（<code>options</code>）</strong>：這是一個物件，可以包含以下屬性：<ul>
+<li><code>capture</code>：與原本用來表示「捕獲」或「冒泡」的機制相同。</li>
+<li><code>once</code>：代表這個事件只會被觸發一次，結束後就自動解除事件監聽。</li>
+<li><code>passive</code>：當設定成 true 時，表示這個事件處理器不會呼叫 <code>event.preventDefault()</code> 這個方法。如果開發者呼叫了 <code>event.preventDefault()</code> 時，瀏覽器會直接忽略，並在 console 主控台顯示警告訊息。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<p><code>event.preventDefault()</code>用於阻止元素的預設行為。<br>例如，點擊一個連結時，它通常會跳轉到新的頁面；使用<code>event.preventDefault()</code>可以阻止這種行為。<br>同樣地，在提交表單時也可以用來防止頁面重新加載。如果開發者呼叫了<code>event.preventDefault()</code>時，瀏覽器會直接忽略，並在 console 主控台顯示警告訊息。</p>
+<p>例如：</p>
+<pre><code class="js">document.getElementById(&#39;button&#39;).addEventListener(&#39;click&#39;, myClickHandler, &#123;
+  once: true,
+  passive: true,
+  capture: true
+&#125;);
+</code></pre>
+<p>在這個例子中，<code>button</code> 的點擊事件只會觸發一次，並且在觸發後會自動移除，同時設置為被動模式以提升性能。</p>
+<h3 id="事件冒泡與捕獲的範例"><a href="#事件冒泡與捕獲的範例" class="headerlink" title="事件冒泡與捕獲的範例"></a>事件冒泡與捕獲的範例</h3><pre><code class="html">&lt;div id=&quot;outer&quot;&gt;
+  &lt;div id=&quot;inner&quot;&gt;Inner Div&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">document.getElementById(&#39;outer&#39;).addEventListener(&#39;click&#39;, () =&gt; &#123;
+  console.log(&#39;Outer Div clicked&#39;);
+&#125;, true); // 捕獲階段
+
+document.getElementById(&#39;inner&#39;).addEventListener(&#39;click&#39;, () =&gt; &#123;
+  console.log(&#39;Inner Div clicked&#39;);
+&#125;);//冒泡階段 (不填參數、false)
+</code></pre>
+<p>當你點擊 <code>inner</code> 這個 <code>div</code> 時，控制台會先顯示 “Outer Div clicked”，再顯示 “Inner Div clicked”，因為 <code>outer</code> 使用了捕獲階段。</p>
+<h3 id="停止事件傳遞"><a href="#停止事件傳遞" class="headerlink" title="停止事件傳遞"></a>停止事件傳遞</h3><p>有時候，我們希望事件不要繼續傳遞，可以使用 <code>stopPropagation()</code> 方法。</p>
+<pre><code class="js">document.getElementById(&#39;inner&#39;).addEventListener(&#39;click&#39;, (e) =&gt; &#123;
+  e.stopPropagation();
+  console.log(&#39;Inner Div clicked&#39;);
+&#125;);
+</code></pre>
+<p>當你點擊 <code>inner</code> 這個 <code>div</code> 時，事件不會再往外傳，因此 “Outer Div clicked” 不會顯示。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li><strong>事件冒泡</strong>：事件從目標元素逐層往外傳遞。</li>
+<li><strong>事件捕獲</strong>：事件從外層元素逐層往內傳遞。</li>
+<li><strong>addEventListener</strong>：可以用第三個參數決定事件處理的階段（捕獲或冒泡）。</li>
+<li>stopPropagation()：用來阻止事件的傳遞。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    <div class="article-category">
+      
+        <b>Categories:</b>
+        <a class="article-category-link" href="/categories/Front-end/">Front-end</a>
+      
+      
+        <br/>
+      
+      
+        <b>Tags:</b>
+        <a class="article-tag-none-link" href="/tags/Front-end/" rel="tag">Front-end</a>
+      
+    </div>
+    
+    
+  </div>
+</article>
+
+  
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2024/10/18/2024-10-18-%E4%B8%80%E4%BD%8D%E5%A5%B3%E6%80%A7%E6%AE%BA%E4%BA%BA%E7%8A%AF%E7%9A%84%E7%B4%A0%E6%8F%8F/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">較新的</strong>
+      <div class="article-nav-title">
+        
+          一位女性殺人犯的素描
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/11/2024-10-11-%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">較舊的</strong>
+      <div class="article-nav-title">
+        
+          使用 a 標籤取得網址參數
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+    </div>
+  </div>
+  
+
+
+
+
+<div id="settings-container">
+  <div id="dark-mode">dark</div>
+  <div id="sans-font">sans</div>
+</div>
+<script type="text/javascript">
+let d=document,r=d.documentElement.style,f=r.setProperty.bind(r),l=localStorage,s=l.getItem('s')||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches),n=l.getItem('n'),m=d.getElementById("dark-mode"),b=()=>{f('--bg-color','#fafafa');f('--code-bg-color','#f4f4f4');f('--text-color','#212121');f('--secondary-color','#808080');f('--tertiary-color','#b0b0b0');f('--link-color','#b5c8cf');f('--link-hover-color','#618794');f('--link-bg-color','#dae4e7');f('--selection-color','#dae4e7');m.innerHTML="dark"},c=()=>{f('--bg-color','#212121');f('--code-bg-color','#292929');f('--text-color','#fff');f('--secondary-color','#c0c0c0');f('--tertiary-color','#6e6e6e');f('--link-color','#4d6b75');f('--link-hover-color','#96b1bb');f('--link-bg-color','#5d828e');f('--selection-color','#acc1c9');m.innerHTML="light"},o=d.getElementById("sans-font"),e=()=>{f('--body-stack','"Lora", "Georgia", "Times New Roman", serif');o.innerHTML="sans"},g=()=>{f('--body-stack','"Lato", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Verdana", sans-serif');o.innerHTML="serif"};m.onclick=()=>{if(s==2){s=1;l.setItem('s',s);c()}else{s=2;l.setItem('s',s);b()}};o.onclick=()=>{if(n==2){n=1;l.setItem('n',n);g()}else{n=2;l.setItem('n',n);e()}};if(!s){s=2;l.setItem('s',2)};if(s==1){c()};if(!n){n=2;l.setItem('n',2)};if(n==1){g()};
+</script>
+
+
+
+
+</body>
+</html>

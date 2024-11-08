@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>你有多懂 == ? | Wei&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+  
+  <meta name="description" content="面試很愛出，剛好正在閱讀作者很細心講解。做個筆記，包含 &#x3D;&#x3D; 比較的解釋。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你有多懂 &#x3D;&#x3D; ?">
+<meta property="og:url" content="http://example.com/2024/09/17/2024-09-17-%E5%9E%8B%E5%88%A5%E6%AF%94%E8%BC%83==/index.html">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="面試很愛出，剛好正在閱讀作者很細心講解。做個筆記，包含 &#x3D;&#x3D; 比較的解釋。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-09-17T07:44:50.000Z">
+<meta property="article:modified_time" content="2024-11-08T03:57:46.986Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Front-end">
+<meta name="twitter:card" content="summary"><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1 id="title">
+    <a href="/">Wei&#39;s Blog</a>
+  </h1>
+  <nav>
+    
+    
+      
+      <a class="nav-link" href="/">Home</a>
+    
+      
+        <span class="nav-spacer">×</span>
+      
+      <a class="nav-link" href="/archives">Archives</a>
+    
+    
+  </nav>
+</header>
+
+    <div id="content">
+      <article id="post-2024-09-17-型別比較==" class="article article-type-post" itemprop="blogPost" itemscope>
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 class="article-title" itemprop="headline name">
+      你有多懂 == ?
+    </h2>
+  
+
+
+        <div class="article-meta">
+          <time class="article-date" datetime="2024-09-17T07:44:50.000Z" itemprop="datePublished">九月 17, 2024, 3:44 下午</time>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <p>面試很愛出，剛好正在閱讀作者很細心講解。<br>做個筆記，包含 &#x3D;&#x3D; 比較的解釋。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="自動轉型的規則"><a href="#自動轉型的規則" class="headerlink" title="自動轉型的規則"></a>自動轉型的規則</h2><ul>
+<li>在兩個等號&#x3D;的比較運算式下，若是雙方的資料類型不同時，則會進行「自動轉型」。</li>
+<li>如果其中有一個值為「Boolean」的情況下，會將<code>true</code>轉型為「數字」的 1，<code>false</code>則會變成數字的 0</li>
+<li>如果遇到字串與數字做比較的情況下，則會將字串透過<code>Number()</code>嘗試轉型為數字後，再進行比較。</li>
+<li>如果其中一方是「物件」型別，而另一方是基本型別的情況下，則會先透過物件的<code>valueof()</code>方法取得對應的基本型別的值，再進行比較。</li>
+</ul>
+<h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><ul>
+<li>undefined 只會和 null 比較時為 true。</li>
+<li>NaN不等於 NaN，這點不論是兩個等號或三個等號的結果都一樣。</li>
+<li>當兩個「物件」進行比較時，要看兩者是否指向同一個「實體」，只有在指向同一個「實體」時才會回傳true。</li>
+</ul>
+<hr>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><p>了解基本規則比較轉換後，直接看Code</p>
+<pre><code class="js">[] == [] // false
+
+[] == ![] // true
+
+[] == &#39;&#39; // true
+
+[] == 0 // true
+
+[&#39;&#39;] == &#39;&#39; // true
+
+[0] == 0 // true
+
+[0] == &#39;&#39; // false
+
+&#39;&#39; == 0 // true
+
+null == undefined // true
+//null 和 undefined 是 JavaScript 中兩個特殊的基本類型，它們彼此之間的比較會返回 true。
+
+[null] == &#39;&#39; // true
+//陣列 [null] 轉型後變成空字串&#39;&#39;，然後再與空字串比較，結果為 true。
+
+[null] == 0 // true
+//陣列 [null] 轉型後變成空字串&#39;&#39;，而空字串轉成數字為 0，因此結果為 true。
+
+[undefined] == &#39;&#39; // true
+//與 null 類似，[undefined] 在轉型時也會被轉成空字串&#39;&#39;，結果為 true。
+
+[undefined] == 0 // false
+//undefined 轉為數字時為 NaN，而與 0 的比較結果為 false。
+</code></pre>
+<hr>
+<h2 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h2><p>在 JavaScript 中，<code>NaN</code> (Not-a-Number) 是一個特殊的數字類型，表示運算或轉型結果無法產生有效的數字。<br><code>NaN</code> 在比較運算時具有一些特殊的行為，尤其是它不等於自身。接下來我們看看幾個 <code>NaN</code> 比較的範例：</p>
+<p><code>NaN == NaN</code>根據 JavaScript 的規則，<code>NaN</code> 與任何值（包括自己）進行比較時，結果都為 <code>false</code>。這是因為 <code>NaN</code> 代表一個無效的數值，沒有辦法與任何東西（包括自己）相等。</p>
+<pre><code class="javascript">NaN == NaN // false
+</code></pre>
+<h3 id="判斷-NaN"><a href="#判斷-NaN" class="headerlink" title="判斷 NaN"></a>判斷 NaN</h3><p>由於 <code>NaN</code> 不等於自己，判斷一個值是否是 <code>NaN</code> 時，我們可以使用 <code>isNaN()</code> 函數。它可以用來判斷一個值是否為 <code>NaN</code>，而不使用直接比較。</p>
+<pre><code class="javascript">isNaN(NaN)       // true
+isNaN(123)       // false
+isNaN(&#39;hello&#39;)   // true (字串無法轉型為數字)
+</code></pre>
+<p><code>Number.isNaN()</code> 是更嚴格的版本，它只會在參數真的為 <code>NaN</code> 時返回 <code>true</code>，而不會像 <code>isNaN()</code> 將非數字類型也當作 <code>NaN</code>。</p>
+<pre><code class="javascript">Number.isNaN(NaN)       // true
+Number.isNaN(123)       // false
+Number.isNaN(&#39;hello&#39;)   // false
+</code></pre>
+<p><code>NaN</code> 與其他數字的比較當 <code>NaN</code> 與任何其他數字（包括 <code>0</code> 和 <code>Infinity</code>）進行比較時，結果總是 <code>false</code>。</p>
+<pre><code class="javascript">NaN &gt; 0    // false
+NaN &lt; 0    // false
+NaN &gt;= 0   // false
+NaN &lt;= 0   // false
+</code></pre>
+<p><code>NaN</code> 的轉型在某些運算中，如果出現無法計算的結果，會自動返回 <code>NaN</code>。例如：</p>
+<pre><code class="javascript">Math.sqrt(-1)  // NaN
+0 / 0          // NaN
+parseInt(&#39;abc&#39;)// NaN
+</code></pre>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20065504/ironman/1259">8天重新認識JavaScript</a></p>
+
+      
+    </div>
+    
+    
+    <div class="article-category">
+      
+        <b>Categories:</b>
+        <a class="article-category-link" href="/categories/Front-end/">Front-end</a>
+      
+      
+        <br/>
+      
+      
+        <b>Tags:</b>
+        <a class="article-tag-none-link" href="/tags/Front-end/" rel="tag">Front-end</a>
+      
+    </div>
+    
+    
+  </div>
+</article>
+
+  
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2024/10/11/2024-10-11-%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">較新的</strong>
+      <div class="article-nav-title">
+        
+          使用 a 標籤取得網址參數
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/09/15/2024-09-15-this/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">較舊的</strong>
+      <div class="article-nav-title">
+        
+          這個 this 到底是什麼？
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+    </div>
+  </div>
+  
+
+
+
+
+<div id="settings-container">
+  <div id="dark-mode">dark</div>
+  <div id="sans-font">sans</div>
+</div>
+<script type="text/javascript">
+let d=document,r=d.documentElement.style,f=r.setProperty.bind(r),l=localStorage,s=l.getItem('s')||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches),n=l.getItem('n'),m=d.getElementById("dark-mode"),b=()=>{f('--bg-color','#fafafa');f('--code-bg-color','#f4f4f4');f('--text-color','#212121');f('--secondary-color','#808080');f('--tertiary-color','#b0b0b0');f('--link-color','#b5c8cf');f('--link-hover-color','#618794');f('--link-bg-color','#dae4e7');f('--selection-color','#dae4e7');m.innerHTML="dark"},c=()=>{f('--bg-color','#212121');f('--code-bg-color','#292929');f('--text-color','#fff');f('--secondary-color','#c0c0c0');f('--tertiary-color','#6e6e6e');f('--link-color','#4d6b75');f('--link-hover-color','#96b1bb');f('--link-bg-color','#5d828e');f('--selection-color','#acc1c9');m.innerHTML="light"},o=d.getElementById("sans-font"),e=()=>{f('--body-stack','"Lora", "Georgia", "Times New Roman", serif');o.innerHTML="sans"},g=()=>{f('--body-stack','"Lato", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Verdana", sans-serif');o.innerHTML="serif"};m.onclick=()=>{if(s==2){s=1;l.setItem('s',s);c()}else{s=2;l.setItem('s',s);b()}};o.onclick=()=>{if(n==2){n=1;l.setItem('n',n);g()}else{n=2;l.setItem('n',n);e()}};if(!s){s=2;l.setItem('s',2)};if(s==1){c()};if(!n){n=2;l.setItem('n',2)};if(n==1){g()};
+</script>
+
+
+
+
+</body>
+</html>

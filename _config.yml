@@ -99,7 +99,7 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: landscape
-theme: hexo-theme-Claudia
+theme: ascent
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -107,4 +107,4 @@ deploy:
 - type: git # 使用 Git 部署
   repo: https://github.com/aliceric27/aliceric27.github.io.git # 你的儲存庫 clone
   branch: gh-pages # 儲存庫分支
-  message: "Update blog - 2024-11-08 15:24:07" # Commit 訊息
+  message: "Update blog {{ now('YYYY-MM-DD HH:mm:ss') }}" # Commit 訊息
