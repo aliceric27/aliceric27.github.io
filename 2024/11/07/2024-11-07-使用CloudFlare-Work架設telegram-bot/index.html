@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>架設 Telegram Bot 的免費方案 | Wei&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+  
+  <meta name="description" content="使用 CloudFlare 免費提供的 Worker 服務作為 Telegram Bot 的 Server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架設 Telegram Bot 的免費方案">
+<meta property="og:url" content="http://example.com/2024/11/07/2024-11-07-%E4%BD%BF%E7%94%A8CloudFlare-Work%E6%9E%B6%E8%A8%ADtelegram-bot/index.html">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="使用 CloudFlare 免費提供的 Worker 服務作為 Telegram Bot 的 Server">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.7sn87x1wid.webp">
+<meta property="og:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.39l740kpx2.webp">
+<meta property="og:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.3uuuqbmo97.webp">
+<meta property="og:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.4n7q82irf3.webp">
+<meta property="og:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.70acpa5g8u.webp">
+<meta property="article:published_time" content="2024-11-07T13:20:20.000Z">
+<meta property="article:modified_time" content="2024-11-08T08:24:09.769Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/aliceric27/picx-images-hosting/raw/master/image.7sn87x1wid.webp"><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1 id="title">
+    <a href="/">Wei&#39;s Blog</a>
+  </h1>
+  <nav>
+    
+    
+      
+      <a class="nav-link" href="/">Home</a>
+    
+      
+        <span class="nav-spacer">×</span>
+      
+      <a class="nav-link" href="/archives">Archives</a>
+    
+    
+  </nav>
+</header>
+
+    <div id="content">
+      <article id="post-2024-11-07-使用CloudFlare-Work架設telegram-bot" class="article article-type-post" itemprop="blogPost" itemscope>
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 class="article-title" itemprop="headline name">
+      架設 Telegram Bot 的免費方案
+    </h2>
+  
+
+
+        <div class="article-meta">
+          <time class="article-date" datetime="2024-11-07T13:20:20.000Z" itemprop="datePublished">十一月 7, 2024, 9:20 晚上</time>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <p>使用 CloudFlare 免費提供的 Worker 服務作為 Telegram Bot 的 Server</p>
+<span id="more"></span>
+
+<p><img src="https://github.com/aliceric27/picx-images-hosting/raw/master/image.7sn87x1wid.webp" alt="image.7sn87x1wid.webp"></p>
+<hr>
+<h2 id="登入-註冊-CloudFlare"><a href="#登入-註冊-CloudFlare" class="headerlink" title="登入&#x2F;註冊 CloudFlare"></a>登入&#x2F;註冊 CloudFlare</h2><p>到 <a target="_blank" rel="noopener" href="https://dash.cloudflare.com/login">CloudFlare</a> 登入&#x2F;註冊</p>
+<p>註冊後就會開通免費方案，可以開始使用</p>
+<h2 id="安裝node-js"><a href="#安裝node-js" class="headerlink" title="安裝node.js"></a>安裝node.js</h2><p>到 <a target="_blank" rel="noopener" href="https://nodejs.org/en">nodejs.org</a> 下載對應版本安裝</p>
+<p>確認是否安裝成功</p>
+<pre><code class="bash">node -v
+</code></pre>
+<h2 id="建立wrangler專案"><a href="#建立wrangler專案" class="headerlink" title="建立wrangler專案"></a>建立wrangler專案</h2><ol>
+<li>擇一使用npm、pnpm、yarn安裝wrangler(官方推薦使用npm)</li>
+</ol>
+<pre><code class="bash">npm install wrangler
+</code></pre>
+<ol start="2">
+<li>使用wrangler建立專案</li>
+</ol>
+<p>專案名稱可以隨意命名，會新增一個專案資料夾</p>
+<pre><code class="bash">npm create cloudflare@latest &lt;你的專案名稱&gt;
+</code></pre>
+<ol start="3">
+<li>到這邊記得選 <code>Template from a GitHub repo</code></li>
+</ol>
+<p><img src="https://github.com/aliceric27/picx-images-hosting/raw/master/image.39l740kpx2.webp" alt="image.39l740kpx2.webp"></p>
+<ol start="4">
+<li>貼上好心人開源的模板</li>
+</ol>
+<pre><code>https://github.com/m-sarabi/cloudflare-telegram-bot
+</code></pre>
+<ol start="5">
+<li><p>選擇TypeScript</p>
+</li>
+<li><p>詢問是否使用 Git 選Yes</p>
+</li>
+<li><p>最後會詢問是否要部屬，選No</p>
+</li>
+</ol>
+<p><img src="https://github.com/aliceric27/picx-images-hosting/raw/master/image.3uuuqbmo97.webp" alt="image.3uuuqbmo97.webp"></p>
+<p>到這邊專案就建立完成了</p>
+<hr>
+<h2 id="設定Telegram-Bot"><a href="#設定Telegram-Bot" class="headerlink" title="設定Telegram Bot"></a>設定Telegram Bot</h2><ol>
+<li><p>到 <a target="_blank" rel="noopener" href="https://t.me/botfather">BotFather</a> 建立Bot</p>
+</li>
+<li><p>輸入 <code>/newbot</code> 並按照指示操作</p>
+</li>
+<li><p>記得Bot Token，等等會用到</p>
+</li>
+</ol>
+<hr>
+<h2 id="專案環境設定"><a href="#專案環境設定" class="headerlink" title="專案環境設定"></a>專案環境設定</h2><ol>
+<li>找到 wrangler.toml 設定環境變數</li>
+</ol>
+<ul>
+<li>SECRET: 將 <SECRET> 替換為一個隨機的 token，以確保請求來自你設定的 webhook。<br>它可以是 1 到 256 個字串，包括 A-Z、a-z、0-9、_ 和 -。</li>
+<li>API_TOKEN: 將 <API_TOKEN> 替換為你 @BotFather 獲得的 API token。</li>
+</ul>
+<p>解開註解，填入剛剛記得的Bot Token<br>SECRET 隨意填寫，TOKEN 填入剛剛記得的Bot Token</p>
+<pre><code class="toml">[vars]
+SECRET = &quot;tg-bot&quot;
+TOKEN = &quot;&lt;API_TOKEN&gt;&quot;
+</code></pre>
+<ol start="2">
+<li>保存後在終端機輸入</li>
+</ol>
+<pre><code class="bash">npm run cf-typegen
+</code></pre>
+<p>這個指令會重新生成 worker-configuration.d.ts 文件，反映你剛剛設定的變數。</p>
+<h2 id="修改專案"><a href="#修改專案" class="headerlink" title="修改專案"></a>修改專案</h2><p>現在，讓我們進入有趣的部分——編寫機器人代碼！在這個例子中，我們將創建以下功能：</p>
+<p><strong>情境</strong>：當使用者發送 <code>/start</code> 指令時，機器人會顯示一條帶有按鈕的訊息。當按下按鈕後，機器人會移除該按鈕並回傳訊息。</p>
+<h3 id="處理-start-指令"><a href="#處理-start-指令" class="headerlink" title="處理 /start 指令"></a>處理 <code>/start</code> 指令</h3><p>所有的更新處理函數都位於 <code>src/Telegram/handlers</code> 目錄中。</p>
+<p>我們將從回應 <code>/start</code> 指令並發送一條訊息與內聯按鈕開始。請按如下方式修改 <code>src/Telegram/handlers/handleMessage.ts</code>：</p>
+<pre><code class="typescript">import &#123; tg &#125; from &#39;../lib/methods&#39;;
+
+export async function handleMessage(message: tgTypes.Message) &#123;
+    const messageText = message.text;
+    const chatId = message.chat.id;
+    if (messageText === &#39;/start&#39;) &#123;
+        await tg.sendMessage(&#123;
+            text: &#39;Welcome to my bot! Press the button to accept my rules!&#39;,
+            chat_id: chatId,
+            reply_markup: &#123;
+                inline_keyboard: [[&#123; text: &#39;I Accept&#39;, callback_data: &#39;accept_rules&#39; &#125;]]
+            &#125;
+        &#125;);
+    &#125;
+&#125;
+</code></pre>
+<p>這段程式碼使用 <code>tg.sendMessage</code> 方法發送一條帶有內聯鍵盤按鈕的訊息。</p>
+<h3 id="處理內聯按鈕點擊"><a href="#處理內聯按鈕點擊" class="headerlink" title="處理內聯按鈕點擊"></a>處理內聯按鈕點擊</h3><p>當使用者點擊內聯按鈕時，我們希望機器人能夠確認這個動作。請修改 <code>src/Telegram/handlers/handleCallbackQuery.ts</code>：</p>
+<pre><code class="typescript">import &#123; tg &#125; from &#39;../lib/methods&#39;;
+
+export async function handleCallbackQuery(callbackQuery: tgTypes.CallbackQuery) &#123;
+    const data = callbackQuery.data;
+    const messageId = callbackQuery.message?.message_id;
+    const chatId = callbackQuery.message?.chat.id;
+    if (messageId &amp;&amp; chatId) &#123;
+        if (data === &#39;accept_rules&#39;) &#123;
+            await tg.editMessageReplyMarkup(&#123;
+                chat_id: chatId,
+                message_id: messageId,
+                reply_markup: undefined
+            &#125;);
+            await tg.sendMessage(&#123;
+                chat_id: chatId,
+                text: &#39;Thanks for accepting my rules.&#39;
+            &#125;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>這段程式碼會監聽 <code>accept_rules</code> 的數據查詢，並在匹配時移除內聯按鈕，然後使用 <code>tg.editMessageReplyMarkup</code> 方法發送一條跟進訊息。</p>
+<h3 id="🔗-註冊你的-Webhook"><a href="#🔗-註冊你的-Webhook" class="headerlink" title="🔗 註冊你的 Webhook"></a>🔗 註冊你的 Webhook</h3><p>在設置好機器人的邏輯後，現在是部署 Worker 並通過 Webhook 連接到 Telegram 的時候了。</p>
+<ol>
+<li>執行 <code>npm wrangler deploy </code> 或 <code>wrangler deploy</code> 來部署你的 Worker。</li>
+<li>前往你的 Cloudflare 控制台並選擇 Workers &amp; Pages。</li>
+</ol>
+<p><img src="https://github.com/aliceric27/picx-images-hosting/raw/master/image.4n7q82irf3.webp" alt="image.4n7q82irf3.webp"></p>
+<ol start="3">
+<li>在你的專案名稱旁邊，點擊 <code>造訪</code>。</li>
+<li>在 URL 連結後面添加 <code>/registerWebhook</code>（例如 <code>https://my-project.my-username.workers.dev/registerWebhook</code>）並按下 Enter。如果你看到 “Webhook registered”，表示你已正確完成設置！</li>
+<li>一旦部署並註冊完成，你可以在 Telegram 上與你的機器人互動。首先點擊 Start（或發送 <code>/start</code>），你應該會看到帶有內聯按鈕的歡迎訊息。</li>
+</ol>
+<h2 id="本機開發"><a href="#本機開發" class="headerlink" title="本機開發"></a>本機開發</h2><p>如果要在本機開發機器人，建議使用 ngrok 來建立一個公開的 URL<br>因為 Telegram 需要 Webhook 的需求 URL 是 https 開頭的</p>
+<ol>
+<li><p>到 <a target="_blank" rel="noopener" href="https://ngrok.com/">ngrok</a> 註冊帳號</p>
+</li>
+<li><p>取得 ngrok 的 authtoken</p>
+</li>
+</ol>
+<p><img src="https://github.com/aliceric27/picx-images-hosting/raw/master/image.70acpa5g8u.webp" alt="image.70acpa5g8u.webp"></p>
+<ol start="3">
+<li>到終端機輸入</li>
+</ol>
+<pre><code class="bash">ngrok config add-authtoken &lt;your-authtoken&gt;
+</code></pre>
+<ol start="4">
+<li>首先修改 <code>package.json</code>，添加開發腳本：</li>
+</ol>
+<pre><code class="json">&#123;
+  &quot;scripts&quot;: &#123;
+    &quot;dev&quot;: &quot;wrangler dev --local&quot;,
+    &quot;tunnel&quot;: &quot;ngrok http 8787&quot;
+  &#125;
+&#125;
+</code></pre>
+<ol start="5">
+<li>修改 <code>src/index.ts</code> 中的 webhook 註冊邏輯：</li>
+</ol>
+<pre><code class="typescript">const isDev = url.hostname === &#39;localhost&#39; || url.hostname.includes(&#39;ngrok&#39;);
+
+if (url.pathname === REGISTER) &#123;
+    try &#123;
+        const webhookUrl = isDev 
+            ? `https://$&#123;url.hostname&#125;$&#123;WEBHOOK&#125;`  // ngrok URL
+            : `$&#123;url.protocol&#125;//$&#123;url.hostname&#125;$&#123;WEBHOOK&#125;`; // production URL
+            
+        const result = await tg.setWebhook(&#123;
+            url: webhookUrl,
+            secret_token: env.SECRET,
+        &#125;);
+        if (result) return new Response(&#39;Webhook registered.&#39;);
+        else return new Response(&#39;Failed to register webhook.&#39;);
+    &#125; catch (error) &#123;
+        return new Response(`Error: $&#123;error&#125;`);
+    &#125;
+&#125;
+</code></pre>
+<ol start="6">
+<li>開發流程：</li>
+</ol>
+<p>這邊會需要開到兩個終端機</p>
+<pre><code class="bash"># 終端機 1：啟動 wrangler
+npm run dev
+
+# 終端機 2：啟動 ngrok
+npm run tunnel
+</code></pre>
+<ol start="7">
+<li>到瀏覽器輸入 ngrok 提供的 URL 來註冊 webhook：</li>
+</ol>
+<pre><code>https://&lt;ngrok-url&gt;/registerWebhook
+</code></pre>
+<h2 id="🔗-參考資源"><a href="#🔗-參考資源" class="headerlink" title="🔗 參考資源"></a>🔗 參考資源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developers.cloudflare.com/workers/">Cloudflare Workers 文檔</a></li>
+<li><a target="_blank" rel="noopener" href="https://core.telegram.org/bots/api">Telegram Bot API</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/m-sarabi/cloudflare-telegram-bot">模板的 GitHub 倉庫</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    <div class="article-category">
+      
+        <b>Categories:</b>
+        <a class="article-category-link" href="/categories/Tools/">Tools</a>
+      
+      
+        <br/>
+      
+      
+        <b>Tags:</b>
+        <a class="article-tag-none-link" href="/tags/Tools/" rel="tag">Tools</a>
+      
+    </div>
+    
+    
+  </div>
+</article>
+
+  
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2024/10/18/2024-10-18-%E4%B8%80%E4%BD%8D%E5%A5%B3%E6%80%A7%E6%AE%BA%E4%BA%BA%E7%8A%AF%E7%9A%84%E7%B4%A0%E6%8F%8F/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">較舊的</strong>
+      <div class="article-nav-title">
+        
+          一位女性殺人犯的素描
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+    </div>
+  </div>
+  
+
+
+
+
+<div id="settings-container">
+  <div id="dark-mode">dark</div>
+  <div id="sans-font">sans</div>
+</div>
+<script type="text/javascript">
+let d=document,r=d.documentElement.style,f=r.setProperty.bind(r),l=localStorage,s=l.getItem('s')||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches),n=l.getItem('n'),m=d.getElementById("dark-mode"),b=()=>{f('--bg-color','#fafafa');f('--code-bg-color','#f4f4f4');f('--text-color','#212121');f('--secondary-color','#808080');f('--tertiary-color','#b0b0b0');f('--link-color','#b5c8cf');f('--link-hover-color','#618794');f('--link-bg-color','#dae4e7');f('--selection-color','#dae4e7');m.innerHTML="dark"},c=()=>{f('--bg-color','#212121');f('--code-bg-color','#292929');f('--text-color','#fff');f('--secondary-color','#c0c0c0');f('--tertiary-color','#6e6e6e');f('--link-color','#4d6b75');f('--link-hover-color','#96b1bb');f('--link-bg-color','#5d828e');f('--selection-color','#acc1c9');m.innerHTML="light"},o=d.getElementById("sans-font"),e=()=>{f('--body-stack','"Lora", "Georgia", "Times New Roman", serif');o.innerHTML="sans"},g=()=>{f('--body-stack','"Lato", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Verdana", sans-serif');o.innerHTML="serif"};m.onclick=()=>{if(s==2){s=1;l.setItem('s',s);c()}else{s=2;l.setItem('s',s);b()}};o.onclick=()=>{if(n==2){n=1;l.setItem('n',n);g()}else{n=2;l.setItem('n',n);e()}};if(!s){s=2;l.setItem('s',2)};if(s==1){c()};if(!n){n=2;l.setItem('n',2)};if(n==1){g()};
+</script>
+
+
+
+
+</body>
+</html>
