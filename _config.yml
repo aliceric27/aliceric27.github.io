@@ -51,7 +51,7 @@ highlight:
   line_threshold: 0
   tab_replace: ""
   exclude_languages:
-    - example
+    - mermaid
   wrap: true
   hljs: false
 prismjs:
@@ -110,4 +110,4 @@ deploy:
 - type: git # 使用 Git 部署
   repo: https://github.com/aliceric27/aliceric27.github.io.git # 你的儲存庫 clone
   branch: gh-pages # 儲存庫分支
-  message: "Update blog - 2024-11-08 23:54:32" # Commit 訊息
+  message: "Update blog - 2024-11-13 17:22:28" # Commit 訊息

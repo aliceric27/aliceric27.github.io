@@ -516,6 +516,33 @@ code.hljs {
   right: 4px;
   top: 8px;
 }
+.expand-btn {
+  bottom: 0;
+  color: var(--highlight-foreground);
+  cursor: pointer;
+  display: none;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
+}
+.fold-cover {
+  background-image: linear-gradient(to top, var(--highlight-background) 0, rgba(0,0,0,0) 100%);
+  bottom: 0;
+  display: none;
+  height: 50px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.highlight-fold {
+  max-height: 500px;
+  overflow-y: hidden !important;
+}
+.highlight-fold .expand-btn,
+.highlight-fold .fold-cover {
+  display: block;
+}
 code,
 kbd,
 figure.highlight,
@@ -551,7 +578,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: Fira Code, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: Fira Mono, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -790,6 +817,10 @@ pre code {
   100% {
     transform: translate(1pt, -2pt) rotate(-1deg);
   }
+}
+.mermaid {
+  margin-bottom: 20px;
+  text-align: center;
 }
 .post-body .note {
   border-radius: 3px;
@@ -1125,7 +1156,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Grenze Gotisch, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Edu AU VIC WA NT Pre, Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1263,7 +1294,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #b106e8;
+  background: #11ff96;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2641,7 +2672,7 @@ code {
   background-color: #fff;
 }
 .posts-expand .post-block:not(:first-of-type) {
-  margin-top: 7vh;
+  margin-top: 10%;
   position: relative;
 }
 .site-brand-container {
@@ -2649,6 +2680,9 @@ code {
   flex-shrink: 0;
   padding: 0;
 }
-.site-title {
-  font-size: 2em;
+.post-body p img {
+  max-width: 600px;
+  max-height: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
 }
