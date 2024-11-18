@@ -350,9 +350,8 @@ dom.querySelector('.table').after('<div class="footer">資料來源：人事行�
 ```
 ### `options` 參數
 
-> `{ html: Boolean }` 控制 HTMLRewriter 處理插入內容的方式。
-> 如果 `html` 布林值設定為 `true`，則內容將被視為原始 HTML。
-> 如果 `html` 布林值設定為 `false` 或未提供，內容將被視為文本，並將對其套用正確的 HTML 轉義。
+`{ html: Boolean }` 
+控制 HTMLRewriter 處理插入內容的方式。如果 html 布林值設為 true，內容會被視為原始 HTML。如果 html 布林值設為 false 或未提供，內容會被視為文字，並套用適當的 HTML 轉義。
 
 
 ## 實際應用範例
