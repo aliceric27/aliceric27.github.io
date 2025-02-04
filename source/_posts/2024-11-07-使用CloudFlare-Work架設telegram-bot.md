@@ -48,7 +48,7 @@ npm create cloudflare@latest <你的專案名稱>
 
 3. 到這邊記得選 `Template from a GitHub repo`
 
-![image.39l740kpx2.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/image.39l740kpx2.webp)
+![image.39l740kpx2.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/hexo-blog/image.39l740kpx2.webp)
 
 4. 貼上好心人開源的模板
 
@@ -62,7 +62,7 @@ https://github.com/m-sarabi/cloudflare-telegram-bot
 
 7. 最後會詢問是否要部屬，選No
 
-![image.3uuuqbmo97.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/image.3uuuqbmo97.webp)
+![image.3uuuqbmo97.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/hexo-blog/image.3uuuqbmo97.webp)
 
 到這邊專案就建立完成了
 
@@ -171,7 +171,7 @@ export async function handleCallbackQuery(callbackQuery: tgTypes.CallbackQuery) 
 1. 執行 `npm wrangler deploy ` 或 `wrangler deploy` 來部署你的 Worker。
 2. 前往你的 Cloudflare 控制台並選擇 Workers & Pages。
 
-![image.4n7q82irf3.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/image.4n7q82irf3.webp)
+![image.4n7q82irf3.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/hexo-blog/image.4n7q82irf3.webp)
 
 3. 在你的專案名稱旁邊，點擊 `造訪`。
 4. 在 URL 連結後面添加 `/registerWebhook`（例如 `https://my-project.my-username.workers.dev/registerWebhook`）並按下 Enter。如果你看到 “Webhook registered”，表示你已正確完成設置！
@@ -188,7 +188,7 @@ export async function handleCallbackQuery(callbackQuery: tgTypes.CallbackQuery) 
 
 2. 取得 ngrok 的 authtoken
 
-![image.70acpa5g8u.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/image.70acpa5g8u.webp)
+![image.70acpa5g8u.webp](https://github.com/aliceric27/picx-images-hosting/raw/master/hexo-blog/image.70acpa5g8u.webp)
 
 3. 到終端機輸入
 

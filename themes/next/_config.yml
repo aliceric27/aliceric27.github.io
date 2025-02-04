@@ -377,7 +377,7 @@ codeblock:
     style:
   # Fold code block
   fold:
-    enable: false
+    enable: true
     height: 500
 
 back2top:
@@ -445,8 +445,8 @@ font:
   # Font settings for site title (.site-title).
   title:
     external: true
-    family: "Grenze Gotisch"
-    size: 2em
+    family: "Edu AU VIC WA NT Pre"
+    size: 1.5em
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
@@ -462,7 +462,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family: "Fira Code"
+    family: "Fira Mono"
 
 
 # ---------------------------------------------------------------
@@ -533,7 +533,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme:
     light: default
