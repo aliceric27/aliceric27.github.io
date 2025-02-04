@@ -1263,7 +1263,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #b106e8;
+  background: #cdcc61;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2620,6 +2620,9 @@ header.header {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+img {
+  max-height: 40vh;
 }
 @media (max-width: 400px) {
   body > a > svg {
