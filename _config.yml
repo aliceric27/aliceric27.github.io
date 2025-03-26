@@ -31,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -110,4 +110,4 @@ deploy:
 - type: git # 使用 Git 部署
   repo: https://github.com/aliceric27/aliceric27.github.io.git # 你的儲存庫 clone
   branch: gh-pages # 儲存庫分支
-  message: "Update blog - 2025-03-23 00:10:21" # Commit 訊息
+  message: "Update blog - 2025-03-26 09:37:32" # Commit 訊息
