@@ -18,29 +18,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"hide","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":null,"post_block":null,"post_header":null,"post_body":null,"coll_header":null,"sidebar":null}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="解釋 JS 中的 Even Loop 機制">
+    <meta name="description" content="常見需求可能是需要取得當前網頁的網址或相關參數，以往可能會用正規表達式比對。閱讀相關書籍發現有更好、更簡單的做法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS 的 Even Loop 是什麼？">
-<meta property="og:url" content="http://example.com/2024/09/10/2024-09-10-js-event-loop/index.html">
+<meta property="og:title" content="使用 a 標籤取得網址參數">
+<meta property="og:url" content="http://example.com/2024/10/11/%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="解釋 JS 中的 Even Loop 機制">
+<meta property="og:description" content="常見需求可能是需要取得當前網頁的網址或相關參數，以往可能會用正規表達式比對。閱讀相關書籍發現有更好、更簡單的做法">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://gcdeng.com/assets/images/Screen_Shot_2021-05-16_at_10.37.11_PM-82dd3d3de0ac10d80cccff54a783ea5e.png">
-<meta property="article:published_time" content="2024-09-10T09:22:10.000Z">
-<meta property="article:modified_time" content="2025-03-12T10:09:09.062Z">
+<meta property="article:published_time" content="2024-10-11T02:55:37.000Z">
+<meta property="article:modified_time" content="2025-03-12T10:09:09.063Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Front-end">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gcdeng.com/assets/images/Screen_Shot_2021-05-16_at_10.37.11_PM-82dd3d3de0ac10d80cccff54a783ea5e.png">
 
 
-<link rel="canonical" href="http://example.com/2024/09/10/2024-09-10-js-event-loop/">
+<link rel="canonical" href="http://example.com/2024/10/11/%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/09/10/2024-09-10-js-event-loop/","path":"2024/09/10/2024-09-10-js-event-loop/","title":"JS 的 Even Loop 是什麼？"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://example.com/2024/10/11/%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/","path":"2024/10/11/網址取值/","title":"使用 a 標籤取得網址參數"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>JS 的 Even Loop 是什麼？ | Wei's Blog</title>
+<title>使用 a 標籤取得網址參數 | Wei's Blog</title>
   
 
 
@@ -107,7 +105,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Macrotask-Queue%E3%80%81Microtask-Queue"><span class="nav-number">2.</span> <span class="nav-text">Macrotask Queue、Microtask Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Macrotask-Queue"><span class="nav-number">2.1.</span> <span class="nav-text">Macrotask Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microtask-Queue%E2%80%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Microtask Queue​</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8a%E6%A8%99%E7%B1%A4%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">使用a標籤方法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +163,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/10/2024-09-10-js-event-loop/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/11/%E7%B6%B2%E5%9D%80%E5%8F%96%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,12 +176,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="JS 的 Even Loop 是什麼？ | Wei's Blog">
+      <meta itemprop="name" content="使用 a 標籤取得網址參數 | Wei's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          JS 的 Even Loop 是什麼？
+          使用 a 標籤取得網址參數
         </h1>
 
         <div class="post-meta-container">
@@ -194,7 +192,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2024-09-10 17:22:10" itemprop="dateCreated datePublished" datetime="2024-09-10T17:22:10+08:00">2024-09-10</time>
+      <time title="創建時間：2024-10-11 10:55:37" itemprop="dateCreated datePublished" datetime="2024-10-11T10:55:37+08:00">2024-10-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -222,38 +220,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>解釋 JS 中的 Even Loop 機制</p>
+    <div class="post-body" itemprop="articleBody"><p>常見需求可能是需要取得當前網頁的網址或相關參數，以往可能會用正規表達式比對。<br>閱讀相關書籍發現有更好、更簡單的做法</p>
 <span id="more"></span>
+
 <hr>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>簡單來說 JS 是單執行緒的機制，為了支援非同步的任務，而在<strong>JS引擎</strong>中引入的一個機制</p>
-<p>機制內分為不同區塊 Stack、Queue、Heap</p>
-<ul>
-<li>JS 程式碼在執行時會依序將任務放入 Stack ，中並按照順序執行。</li>
-<li>當一個任務呼叫為<strong>非同步</strong>任務時則會放在 Queue 內，待 Stack 內的任務完成後，會將 Queue 的任務放到 Stack 內最後按順序執行</li>
-</ul>
-<h2 id="Macrotask-Queue、Microtask-Queue"><a href="#Macrotask-Queue、Microtask-Queue" class="headerlink" title="Macrotask Queue、Microtask Queue"></a>Macrotask Queue、Microtask Queue</h2><p>Callback Queue 又分為 Macrotask Queue 和 Microtask Queue</p>
-<h3 id="Macrotask-Queue"><a href="#Macrotask-Queue" class="headerlink" title="Macrotask Queue"></a>Macrotask Queue</h3><ul>
-<li>從<code>&lt;script src=&quot;...&quot;&gt;</code>外部下載的 script</li>
-<li>DOM event handlers，例如 mousemove event 的 callback function handler</li>
-<li>各種 Web APIs，例如 setTimeout 的 callback function</li>
-<li>ajax callback function</li>
-</ul>
-<p><img src="https://gcdeng.com/assets/images/Screen_Shot_2021-05-16_at_10.37.11_PM-82dd3d3de0ac10d80cccff54a783ea5e.png" alt="marcotask"></p>
-<h3 id="Microtask-Queue​"><a href="#Microtask-Queue​" class="headerlink" title="Microtask Queue​"></a>Microtask Queue​</h3><ul>
-<li>promise <code>.then/catch/finally</code> 中的 callback function</li>
-<li><code>queueMicrotask(func)</code> 中的 func</li>
-</ul>
-<p>簡單來說，像是 Promise.then 在非同步任務中是屬於 Microtask Queue​ ，在 Even Loop 則會被分配到優先執行的 Microtask Queue​</p>
-<p>每個 Macrotask 執行結束後會先將 Microtask queue 中的任務全部執行完，才會繼續執行瀏覽器渲染跟其他 Macrotask。</p>
-<blockquote>
-<p>舉例<br>這個執行印出答案為 1,3,4,2<br>Macrotask​ 為 console.log(1)<br>Microtask queue 為 Promise.then()<br>Macrotask Queue 為 setTimeout()</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">4</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<p>附上更詳細的解釋，有影片和圖片解釋寫的非常完整</p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=z4S6ZxRD2rA&pp=ygUKRXZlbnQgTG9vcA==">JavaScript Event Loop解說：單執行緒還能異步運算？</a></p>
-<p><a target="_blank" rel="noopener" href="https://gcdeng.com/series/Javascript/javascript-deep-dive-into-event-loop">深入了解事件迴圈(Event Loop)，Macrotask跟Microtask是什麼？</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.explainthis.io/zh-hant/swe/what-is-event-loop">請說明瀏覽器中的事件循環 (Event Loop)</a></p>
+<h2 id="使用a標籤方法"><a href="#使用a標籤方法" class="headerlink" title="使用a標籤方法"></a>使用<code>a</code>標籤方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">a.<span class="property">href</span> = <span class="string">&#x27;www.google.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">hostname</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">pathname</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">hash</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(a) <span class="comment">// 在瀏覽器上可查看a標籤的相關靜態方法</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -270,13 +242,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/09/03/2024-09-03-Vue%20%E5%BE%9E%E6%A8%A1%E6%9D%BF%E5%82%B3%E5%80%BC%E5%88%B0%20CSS%20%E5%81%BD%E5%85%83%E7%B4%A0%20content%20%E5%85%A7%E5%AE%B9/" rel="prev" title="使用 Vue 設定偽元素 content">
-                  <i class="fa fa-angle-left"></i> 使用 Vue 設定偽元素 content
+                <a href="/2024/09/17/%E5%9E%8B%E5%88%A5%E6%AF%94%E8%BC%83==/" rel="prev" title="你有多懂 == ?">
+                  <i class="fa fa-angle-left"></i> 你有多懂 == ?
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/09/15/2024-09-15-this/" rel="next" title="這個 this 到底是什麼？">
-                  這個 this 到底是什麼？ <i class="fa fa-angle-right"></i>
+                <a href="/2024/10/11/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1/" rel="next" title="事件冒泡、事件捕獲">
+                  事件冒泡、事件捕獲 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
