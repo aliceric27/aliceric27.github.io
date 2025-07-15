@@ -38,3 +38,6 @@ if(process.platform==='win32'&&!W&&v1().existsSync('C:/Program Files/Git/bin/bas
 
 保存後重啟 claude 就正常了
 
+[參考連結](https://github.com/anthropics/claude-code/issues/3461#issuecomment-3068231817)
+
+------
