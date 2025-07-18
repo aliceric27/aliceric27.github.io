@@ -20,7 +20,7 @@ TL:DR
 
 進環境變數新增變數 `CLAUDE_CODE_GIT_BASH_PATH`
 
-指定位置 `C:\Program Files\Git\git-bash.exe`
+指定位置 `C:\Program Files\Git\bin\bash.exe`
 
 
 保存後重啟 終端 執行`claude` 就正常了
